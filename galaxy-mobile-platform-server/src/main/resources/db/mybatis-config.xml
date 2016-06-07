@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration PUBLIC   
+    "-//mybatis.org//DTD Config 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="UserPO" type="com.galaxyinternet.model.user.User" />
+		<typeAlias alias="DictPO" type="com.galaxyinternet.model.dict.Dict" />
+		<typeAlias alias="Role" type="com.galaxyinternet.model.role.Role" />
+		<typeAlias alias="Department" type="com.galaxyinternet.model.department.Department" />
+		<typeAlias alias="UserRole" type="com.galaxyinternet.model.user.UserRole" />
+		<typeAlias alias="OperationMessagePO" type="com.galaxyinternet.model.operationMessage.OperationMessage" />
+		<!--param  -->
+		<typeAlias alias="BatchDictInsetParam" type="com.galaxyinternet.model.dict.BatchDictInsetParam" />
+		
+	</typeAliases>
+</configuration>
