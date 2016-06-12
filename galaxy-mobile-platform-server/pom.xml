@@ -3,7 +3,7 @@
 	<parent>
 	  <groupId>com.galaxyinternet</groupId>
 	  <artifactId>galaxy-mobile-platform</artifactId>
-	  <version>1.0.2-SNAPSHOT</version>
+	  <version>1.0.1-mobile</version> <!-- SNAPSHOT --> 
 	</parent>
 	<artifactId>galaxy-mobile-platform-server</artifactId>
 	<packaging>war</packaging>
@@ -164,13 +164,13 @@
 				<!-- dubbo -->
 				<dubbo.application.name>galaxyPlatformDubboProvider</dubbo.application.name>
 				<dubbo.protocol.name>dubbo</dubbo.protocol.name>
-				<dubbo.registry.address>zookeeper://10.9.210.22:12181?client=zkclient</dubbo.registry.address>
+				<dubbo.registry.address>zookeeper://10.9.210.22:12184?client=zkclient</dubbo.registry.address>
 				<dubbo.protocol.port>8081</dubbo.protocol.port>
 
-				<project.home.page.url>http://fx.dev.galaxyinternet.com/</project.home.page.url>
-				<galaxy.project.sop.endpoint>http://fx.dev.galaxyinternet.com/mobileSop/</galaxy.project.sop.endpoint>
-				<galaxy.project.report.endpoint>http://fx.dev.galaxyinternet.com/mobileReport/</galaxy.project.report.endpoint>
-				<galaxy.project.platform.endpoint>http://fx.dev.galaxyinternet.com/mobilePlatform/</galaxy.project.platform.endpoint>
+				<project.home.page.url>http://fxmob.dev.galaxyinternet.com/</project.home.page.url>
+				<galaxy.project.sop.endpoint>http://fxmob.dev.galaxyinternet.com/mobileSop/</galaxy.project.sop.endpoint>
+				<galaxy.project.report.endpoint>http://fxmob.dev.galaxyinternet.com/mobileReport/</galaxy.project.report.endpoint>
+				<galaxy.project.platform.endpoint>http://fxmob.dev.galaxyinternet.com/mobilePlatform/</galaxy.project.platform.endpoint>
 				<!-- memcached <memcached.list_1.ip>192.168.101.22</memcached.list_1.ip> 
 					<memcached.list_1.port>11211</memcached.list_1.port> <memcached.object_1.ip>192.168.101.22</memcached.object_1.ip> 
 					<memcached.object_1.port>11211</memcached.object_1.port> <mongodb.dbname>community</mongodb.dbname> 
