@@ -3,7 +3,7 @@
   <parent>
     <groupId>com.galaxyinternet</groupId>
     <artifactId>galaxy-mobile-platform</artifactId>
-    <version>1.0.1-mobile</version>
+    <version>1.0.1.mobile-SNAPSHOT</version>
   </parent>
   <artifactId>galaxy-mobile-platform-api</artifactId>
   <packaging>jar</packaging>  

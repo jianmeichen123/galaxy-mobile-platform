@@ -3,7 +3,7 @@
 	<parent>
 	  <groupId>com.galaxyinternet</groupId>
 	  <artifactId>galaxy-mobile-platform</artifactId>
-	  <version>1.0.1-mobile</version> <!-- SNAPSHOT --> 
+	  <version>1.0.1.mobile-SNAPSHOT</version> <!-- SNAPSHOT --> 
 	</parent>
 	<artifactId>galaxy-mobile-platform-server</artifactId>
 	<packaging>war</packaging>
