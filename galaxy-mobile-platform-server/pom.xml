@@ -54,7 +54,7 @@
 							<port>9999</port>
 						</connector>
 					</connectors>
-					<contextPath>/platform</contextPath>
+					<contextPath>/mobilePlatform</contextPath>
 				</configuration>
 			</plugin>
 		</plugins>
