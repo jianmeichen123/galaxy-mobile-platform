@@ -3,7 +3,8 @@
 	<parent>
 	  <groupId>com.galaxyinternet</groupId>
 	  <artifactId>galaxy-mobile-platform</artifactId>
-	  <version>1.0.1-mobile</version> <!-- SNAPSHOT --> 
+<!-- 	  <version>1.0.1.mobile-SNAPSHOT</version> -->
+       <version>1.0.1.mobile</version>
 	</parent>
 	<artifactId>galaxy-mobile-platform-server</artifactId>
 	<packaging>war</packaging>
@@ -54,7 +55,7 @@
 							<port>9999</port>
 						</connector>
 					</connectors>
-					<contextPath>/platform</contextPath>
+					<contextPath>/mobilePlatform</contextPath>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -150,14 +151,17 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
-				<!-- 数据库连接地址和数据库名 -->
+				<!--开发环境数据库 -->
+<!-- 				<jdbc.url> -->
+<!-- 					jdbc:mysql://10.9.11.232:3306/fx_db?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf8 -->
+<!-- 				</jdbc.url> -->
+
+                 <!-- 仿真数据库 -->
 				<jdbc.url>
-					jdbc:mysql://10.9.11.232:3306/fx_db?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf8
+					jdbc:mysql://10.9.11.219:3306/fx_db?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf8
 				</jdbc.url>
-				<!-- <jdbc.user.url> jdbc:mysql://127.0.0.1:3306/galaxy_user?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf8 
-					</jdbc.user.url> -->
 				<jdbc.username>fxuser</jdbc.username>
-				<jdbc.password>fxdb_Fp9EPkG2</jdbc.password>
+				<jdbc.password>7EPCi4vCoZzqIcrW</jdbc.password>
 				<!-- 本地项目地址 -->
 				<log4j.path>${catalina.base}/logs/</log4j.path>
 
