@@ -55,7 +55,5 @@ public class OperationMessageController extends BaseControllerImpl<OperationMess
 		}
 		responseBody.setResult(result);
 		return responseBody;
-	}
-
-	
+	}	
 }
