@@ -31,7 +31,7 @@ public enum OperationType {
 	ADD_MEET_FILE_RECORD	("/galaxy/project/progress/addfilemeet",		PlatformConst.PROJECT_TYPE, "添加"),
 	EDIT_MEET_FILE_RECORD	("/galaxy/project/progress/updatemeet",			PlatformConst.PROJECT_TYPE, "编辑"),
 	
-	ADD_VIEW_RECORD			("/galaxy/project/progress/addInterview", 		PlatformConst.PROJECT_TYPE, "添加访谈记录"),
+	ADD_VIEW_RECORD			("/galaxy/project/progress/addInterview", 		PlatformConst.PROJECT_TYPE, "添加"),
 	ADD_MEET_RECORD			("/galaxy/project/progress/addmeet", 			PlatformConst.PROJECT_TYPE, "添加会议纪要"),
 	
 	
