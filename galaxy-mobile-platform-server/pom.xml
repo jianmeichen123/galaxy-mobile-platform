@@ -4,7 +4,7 @@
 	  <groupId>com.galaxyinternet</groupId>
 	  <artifactId>galaxy-mobile-platform</artifactId>
 	  <version>1.0.3.mobile-SNAPSHOT</version>
-<!--        <version>1.0.1.mobile</version> -->
+<!--        <version>1.0.3.mobile</version> -->
 	</parent>
 	<artifactId>galaxy-mobile-platform-server</artifactId>
 	<packaging>war</packaging>
@@ -84,6 +84,7 @@
 				</jdbc.url>
 				<jdbc.username>fxuser</jdbc.username>
 				<jdbc.password>fxdb_Fp9EPkG2</jdbc.password>
+                
 				<!-- 本地项目地址 -->
 				<log4j.path>${catalina.base}/logs/</log4j.path>
 
@@ -155,10 +156,6 @@
 				<jdbc.url>
 					jdbc:mysql://10.9.11.232:3306/fx_db?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf8
 				</jdbc.url>
-                 <!-- 仿真数据库 -->
-<!-- 				<jdbc.url> -->
-<!-- 					jdbc:mysql://10.9.11.219:3306/fx_db?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf8 -->
-<!-- 				</jdbc.url> -->
 				<jdbc.username>fxuser</jdbc.username>
 				<jdbc.password>fxdb_Fp9EPkG2</jdbc.password>
 				<!-- 本地项目地址 -->

@@ -9,7 +9,7 @@ import com.galaxyinternet.platform.constant.PlatformConst;
  */
 public enum OperationType {
 	
-	QUERY					("/galaxy/project/sp", 				PlatformConst.PROJECT_TYPE, "查阅过项目"), 
+	//QUERY					("/galaxy/project/sp", 				PlatformConst.PROJECT_TYPE, "查阅过项目"), 
 	CREATE					("/galaxy/project/ap", 				PlatformConst.PROJECT_TYPE, "创建"), 
 	UPDATE					("/galaxy/project/up", 				PlatformConst.PROJECT_TYPE, "编辑"), 
 	PRO_ADD_PER 			("/galaxy/project/app", 			PlatformConst.PROJECT_TYPE, "添加团队成员"), 
@@ -31,7 +31,7 @@ public enum OperationType {
 	ADD_MEET_FILE_RECORD	("/galaxy/project/progress/addfilemeet",		PlatformConst.PROJECT_TYPE, "添加"),
 	EDIT_MEET_FILE_RECORD	("/galaxy/project/progress/updatemeet",			PlatformConst.PROJECT_TYPE, "编辑"),
 	
-	ADD_VIEW_RECORD			("/galaxy/project/progress/addInterview", 		PlatformConst.PROJECT_TYPE, "添加访谈记录"),
+	ADD_VIEW_RECORD			("/galaxy/project/progress/addInterview", 		PlatformConst.PROJECT_TYPE, "添加"),
 	ADD_MEET_RECORD			("/galaxy/project/progress/addmeet", 			PlatformConst.PROJECT_TYPE, "添加会议纪要"),
 	
 	
