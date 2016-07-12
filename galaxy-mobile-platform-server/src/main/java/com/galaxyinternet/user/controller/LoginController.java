@@ -1,5 +1,8 @@
 package com.galaxyinternet.user.controller;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
@@ -14,19 +17,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.galaxyinternet.bo.UserBo;
+import com.galaxyinternet.bo.UserLogonHisBO;
 import com.galaxyinternet.common.controller.BaseControllerImpl;
 import com.galaxyinternet.framework.core.constants.Constants;
-import com.galaxyinternet.framework.core.constants.UserConstant;
+import com.galaxyinternet.framework.core.enums.Terminal;
 import com.galaxyinternet.framework.core.model.Header;
 import com.galaxyinternet.framework.core.model.ResponseData;
 import com.galaxyinternet.framework.core.model.Result;
 import com.galaxyinternet.framework.core.model.Result.Status;
 import com.galaxyinternet.framework.core.service.BaseService;
-import com.galaxyinternet.framework.core.utils.PWDUtils;
 import com.galaxyinternet.framework.core.utils.SessionUtils;
-import com.galaxyinternet.model.department.Department;
+import com.galaxyinternet.model.logonHis.UserLogonHis;
 import com.galaxyinternet.model.role.Role;
 import com.galaxyinternet.model.user.User;
+import com.galaxyinternet.service.UserLogonHisService;
 import com.galaxyinternet.service.UserService;
 
 @Controller
@@ -38,6 +42,9 @@ public class LoginController extends BaseControllerImpl<User, UserBo> {
 
 	@Autowired
 	com.galaxyinternet.framework.cache.Cache cache;
+	
+	@Autowired
+	private UserLogonHisService  userLogonHisService;
 
 	@Override
 	protected BaseService<User> getBaseService() {
@@ -93,6 +100,38 @@ public class LoginController extends BaseControllerImpl<User, UserBo> {
 			user.setGender(null);
 			responsebody.setEntity(user);
 			responsebody.setResult(new Result(Status.OK, Constants.OPTION_SUCCESS, "登录成功！"));
+			try{
+				UserLogonHisBO logonBo = new UserLogonHisBO();
+				logonBo.setUserId(user.getId());
+				logonBo.setLoginDate(new Date());
+				UserLogonHis userLogon = userLogonHisService.queryUserLogon(logonBo);
+				if(userLogon==null){
+					UserLogonHis userLogonHis = new UserLogonHis();				
+					userLogonHis.setAccessClient(Terminal.IOS.getTerminalName());
+					userLogonHis.setLoginDate(new Date());
+					
+					userLogonHis.setUserId(user.getId());
+					userLogonHis.setNickName(user.getNickName());
+					
+					Date date = new Date();       
+				    Timestamp initdate = new Timestamp(date.getTime()); 
+				    userLogonHis.setLoginDate(date);
+					userLogonHis.setInitLogonTime(initdate);
+								
+					userLogonHis.setLogonTimes(1);					
+					userLogonHisService.saveLogonHis(userLogonHis);
+				}else{
+					UserLogonHis userLogonHis = new UserLogonHis();				
+					userLogonHis.setId(userLogon.getId());
+			
+					userLogonHis.setLogonTimes(userLogon.getLogonTimes()+1);					
+					userLogonHisService.updateUserLogon(userLogonHis);
+				}
+				
+				
+			}catch(Exception ex){
+				logger.error("保存APP登录记录时发生错误", ex);
+			}
 		}
 		return responsebody;
 	}
@@ -167,6 +206,30 @@ public class LoginController extends BaseControllerImpl<User, UserBo> {
 		request.getSession().removeAttribute(Constants.SESSION_USER_KEY); // 从本地session删除user
 		cache.remove(sessionId); // 从redis中删除sessionId
 		return true;
+	}
+	
+	/**
+	 *
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/countTodayOnline", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseData<UserLogonHisBO> getTodayonlineCount(){
+		UserLogonHisBO logonHisBo = new UserLogonHisBO();
+		logonHisBo.setLoginDate(new Date());
+		ResponseData<UserLogonHisBO> responsebody = new ResponseData<UserLogonHisBO>();
+		Integer personNum = null;
+		try{
+			personNum = userLogonHisService.queryCountTodayLogon(logonHisBo);
+		}catch(Exception ex){
+			logger.error("统计当天APP登录总人数发生查询错误", ex);
+			responsebody.setResult(new Result(Status.ERROR, null, "统计当天APP登录总人数发生查询错误!"));
+			return responsebody;
+		}
+		UserLogonHisBO  logonHis = new UserLogonHisBO();
+		logonHis.setTodayPerson(personNum);
+		responsebody.setResult(new Result(Status.OK, null));
+		responsebody.setEntity(logonHis);
+		return responsebody;
 	}
 
 }
