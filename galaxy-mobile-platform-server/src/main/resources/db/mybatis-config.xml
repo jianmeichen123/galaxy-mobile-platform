@@ -12,6 +12,8 @@
 		<typeAlias alias="OperationMessagePO" type="com.galaxyinternet.model.operationMessage.OperationMessage" />
 		<!--param  -->
 		<typeAlias alias="BatchDictInsetParam" type="com.galaxyinternet.model.dict.BatchDictInsetParam" />
+        <typeAlias alias="userLogonHis" type="com.galaxyinternet.model.logonHis.UserLogonHis" /> 
+		 
 		
 	</typeAliases>
 </configuration>
