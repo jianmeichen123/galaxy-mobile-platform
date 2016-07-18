@@ -47,7 +47,7 @@
 	<!-- 查询总数 -->
 	<select id="selectCount" resultType="java.lang.Long"
 		parameterType="java.util.Map">
-		select count(id) from t_role
+		select count(id) from platform_role
 		<include refid="Base_Where_Clause" />
 	</select>
 
@@ -55,7 +55,7 @@
 	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
 		select
 		<include refid="Base_Column_List" />
-		from t_role
+		from platform_role
 		<include refid="Base_Where_Clause" />
 	</select>
 
@@ -63,13 +63,13 @@
 	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long">
 		select
 		<include refid="Base_Column_List" />
-		from t_role where id = #{id}
+		from platform_role where id = #{id}
 	</select>
 	
   	<insert id="insert" parameterType="Role" >
 	    <![CDATA[
 	        insert into
-	        t_role (
+	        platform_role (
         	id,
         	name,
         	role_code,
@@ -91,7 +91,7 @@
     
     <!-- 更新 -->
 	<update id="updateByIdSelective" parameterType="Role">
-		update t_role
+		update platform_role
 		<set>
 			<if test="name != null">  name =#{name},</if>
 			<if test="roleCode != null">  role_code =#{roleCode},</if>
@@ -116,7 +116,7 @@
 	</update>
     <!-- 通过ID更新 -->
 	<update id="updateById" parameterType="Role">
-		update t_role
+		update platform_role
 		<set>
 			<if test="name != null">  name =#{name},</if>
 			<if test="roleCode != null">  role_code =#{roleCode},</if>
@@ -131,11 +131,11 @@
     
     <!-- 删除 -->
 	<delete id="delete" parameterType="java.util.Map">
-		delete from t_role
+		delete from platform_role
 		<include refid="Base_Where_Clause" />
 	</delete>
      <!-- 根据ID删除 -->
 	<delete id="deleteById" parameterType="Role">
-		delete from t_role where id = #{id}
+		delete from platform_role where id = #{id}
 	</delete>
 </mapper>
