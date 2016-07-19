@@ -12,9 +12,10 @@ public enum OperationType {
 	//QUERY					("/galaxy/project/sp", 				PlatformConst.PROJECT_TYPE, "查阅过项目"), 
 	CREATE					("/galaxy/project/ap", 				PlatformConst.PROJECT_TYPE, "创建"), 
 	/*UPDATE					("/galaxy/project/up", 				PlatformConst.PROJECT_TYPE, "编辑"), */
-	PRO_ADD_PER 			("/galaxy/project/app", 			PlatformConst.PROJECT_TYPE, "添加团队成员"), 
+	UPDATE					("/galaxy/project/editProject", 	PlatformConst.PROJECT_TYPE, "编辑"),
+	/*PRO_ADD_PER 			("/galaxy/project/app", 			PlatformConst.PROJECT_TYPE, "添加团队成员"), 
 	PRO_EDIT_PER			("/galaxy/project/upp", 			PlatformConst.PROJECT_TYPE, "修改团队成员"), 
-	PRO_DEL_PER 			("/galaxy/project/dpp", 			PlatformConst.PROJECT_TYPE, "删除团队成员"), 
+	PRO_DEL_PER 			("/galaxy/project/dpp", 			PlatformConst.PROJECT_TYPE, "删除团队成员"), */
 	PRO_INFO    			("/galaxy/project/getProjectInfo", 	PlatformConst.PROJECT_TYPE, "获取项目信息"),
 	PRO_FILE_UP 			("/galaxy/project/stageChange", 	PlatformConst.PROJECT_TYPE, "文档上传"),
 	PRO_START_REVIEW		("/galaxy/project/startReview", 	PlatformConst.PROJECT_TYPE, "启动内部评审"),
