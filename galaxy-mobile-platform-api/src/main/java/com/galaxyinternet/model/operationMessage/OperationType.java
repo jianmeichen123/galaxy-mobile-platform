@@ -20,10 +20,10 @@ public enum OperationType {
 	PRO_FILE_UP 			("/galaxy/project/stageChange", 	PlatformConst.PROJECT_TYPE, "文档上传"),
 	PRO_START_REVIEW		("/galaxy/project/startReview", 	PlatformConst.PROJECT_TYPE, "启动内部评审"),
 	
-	APPLY_CEO_SCHEDULE  	("/galaxy/project/incm", 			PlatformConst.PROJECT_TYPE, "申请CEO评审会排期"),
-	APPLY_PROJECT_SCHEDULE  ("/galaxy/project/ges", 			PlatformConst.PROJECT_TYPE, "申请立项会排期"),
-	APPLY_PROJECT_SCH		("/galaxy/project/inlx", 			PlatformConst.PROJECT_TYPE, "申请立项会排期"),
-	APPLY_VOTE_SCHEDULE		("/galaxy/project/smp", 			PlatformConst.PROJECT_TYPE, "申请投决会排期"),
+	APPLY_CEO_SCHEDULE  	("/galaxy/approgress/appPq/"+ UrlNumber.one,			PlatformConst.PROJECT_TYPE, "申请CEO评审会会议排期"),
+	APPLY_PROJECT_SCHEDULE  ("/galaxy/approgress/appPq/"+ UrlNumber.two, 			PlatformConst.PROJECT_TYPE, "申请立项会会议排期"),
+	/*APPLY_PROJECT_SCH		("/galaxy/project/inlx", 			PlatformConst.PROJECT_TYPE, "申请立项会排期"),*/
+	APPLY_VOTE_SCHEDULE		("/galaxy/approgress/appPq/"+ UrlNumber.three, 			PlatformConst.PROJECT_TYPE, "申请投决会会议排期"),
 	
 	CLOSE					("/galaxy/project/breakpro",					PlatformConst.PROJECT_TYPE, "关闭"),
 	
@@ -42,9 +42,9 @@ public enum OperationType {
 	SUBMIT_TASK              ("/galaxy/soptask/submitTask",                 PlatformConst.TASK_TYPE, "完成任务"),
 
 	
-	ADD_SCHEDULING			("/galaxy/project/updateReserveTime/"+ UrlNumber.one, 	PlatformConst.SCHEDULING_TYPE, "创建会议排期"),
-	UPDATE_SCHEDULING		("/galaxy/project/updateReserveTime/"+ UrlNumber.two, 	PlatformConst.SCHEDULING_TYPE, "更新会议排期"),
-	DELETE_SCHEDULING		("/galaxy/project/updateReserveTime/"+ UrlNumber.three, PlatformConst.SCHEDULING_TYPE, "删除会议排期"),
+	ADD_SCHEDULING			("/galaxy/project/updateReserveTimeByApp/"+ UrlNumber.one, 	PlatformConst.SCHEDULING_TYPE, "创建会议排期"),
+	UPDATE_SCHEDULING		("/galaxy/project/updateReserveTimeByApp/"+ UrlNumber.two, 	PlatformConst.SCHEDULING_TYPE, "更新会议排期"),
+	DELETE_SCHEDULING		("/galaxy/project/updateReserveTimeByApp/"+ UrlNumber.three, PlatformConst.SCHEDULING_TYPE, "删除会议排期"),
 
 	TASK_URGED				("/galaxy/taskprocess/taskUrged/"+UrlNumber.one, 		PlatformConst.TASK_TYPE, "催办"),
 	TASK_ADD_FILE			("/galaxy/taskprocess/uploadFile/"+UrlNumber.one,		PlatformConst.TASK_TYPE, "上传"),
