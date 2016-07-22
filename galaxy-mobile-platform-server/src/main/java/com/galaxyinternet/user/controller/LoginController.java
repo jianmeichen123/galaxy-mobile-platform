@@ -87,8 +87,8 @@ public class LoginController extends BaseControllerImpl<User, UserBo> {
 			}
 			String sessionId = SessionUtils.createWebSessionId(); // 生成sessionId
 			setCacheSessionId(request, user, sessionId);
-		/*	Header header = getHeader(user, sessionId);
-			responsebody.setHeader(header);*/
+			Header header = getHeader(user, sessionId);
+			responsebody.setHeader(header);
 			user.setPassword(null);
 			user.setCreatedTime(null);
 			user.setUpdatedTime(null);
