@@ -7,7 +7,7 @@
 	</parent>
 	<artifactId>galaxy-mobile-platform-server</artifactId>
 	<packaging>war</packaging>
-  
+	
     <name />
 	<description />
 	<properties>
