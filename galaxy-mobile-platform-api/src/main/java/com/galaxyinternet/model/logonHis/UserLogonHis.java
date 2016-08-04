@@ -26,7 +26,10 @@ public class UserLogonHis extends BaseEntity {
 	private Timestamp  initLogonTime ; // '首次登录时间',
 	private Timestamp  lastLogonTime ;  // '最后登录时间',
 	private Integer  logonTimes;  //'当天登录累计次数',
-	
+	//定义的返回时间
+	private String inTime;
+	//获取用户的登录总数
+	private Long strCount;
 	
 	public Timestamp getLastLogonTime() {
 		return lastLogonTime;
@@ -70,6 +73,20 @@ public class UserLogonHis extends BaseEntity {
 	public void setLogonTimes(Integer logonTimes) {
 		this.logonTimes = logonTimes;
 	}
+	public Long getStrCount() {
+		return strCount;
+	}
+	public void setStrCount(Long strCount) {
+		this.strCount = strCount;
+	}
+	public String getInTime() {
+		return inTime;
+	}
+	public void setInTime(String inTime) {
+		this.inTime = inTime;
+	}
 
 
+	
+	
 }

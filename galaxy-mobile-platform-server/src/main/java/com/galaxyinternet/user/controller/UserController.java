@@ -44,8 +44,10 @@ import com.galaxyinternet.framework.core.utils.mail.MailTemplateUtils;
 import com.galaxyinternet.framework.core.utils.mail.SimpleMailSender;
 import com.galaxyinternet.framework.core.validator.ValidatorResultHandler;
 import com.galaxyinternet.model.department.Department;
+import com.galaxyinternet.model.logonHis.UserLogonHis;
 import com.galaxyinternet.model.user.User;
 import com.galaxyinternet.service.DepartmentService;
+import com.galaxyinternet.service.UserLogonHisService;
 import com.galaxyinternet.service.UserService;
 
 /**
@@ -63,6 +65,9 @@ public class UserController extends BaseControllerImpl<User, UserBo> {
 	
 	@Autowired
 	private Cache cache;
+	
+	@Autowired
+	private UserLogonHisService userLogonHisService;
 
 	@Autowired
 	private DepartmentService departmentService;
@@ -391,5 +396,23 @@ public class UserController extends BaseControllerImpl<User, UserBo> {
 		}
 		return map;
 	}
+	/**
+	 * app端获取登录人的列表
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/selectAllapp", method = RequestMethod.GET)
+	public ResponseData<UserLogonHis> selectAllapp(HttpServletRequest request) {
+		
+		
+		ResponseData<UserLogonHis> responseBody = new ResponseData<UserLogonHis>();
+		
+		List<UserLogonHis> sl = userLogonHisService.selectBiao();
+		responseBody.setEntityList(sl);
+		return responseBody;
+	}
+	
+	
 	
 }

@@ -1,5 +1,7 @@
 package com.galaxyinternet.user.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
@@ -67,5 +69,23 @@ public class UserLogonHisDaoImpl extends BaseDaoImpl<UserLogonHis, Long> impleme
 		}
 		return result;
 	}
+	@Override
+	public List<UserLogonHis> selectAllapp() {
+		try {
+			return sqlSessionTemplate.selectList("selectUserLogonHis");
+		} catch (Exception e) {
+			throw new DaoException(String.format("查询所有对象列表出错！语句：%s", getSqlName("selectUserLogonHis")), e);
+		}
+	}
+	
+	@Override
+	public List<UserLogonHis> selectBiao() {
+		try {
+			return sqlSessionTemplate.selectList("selectbiao");
+		} catch (Exception e) {
+			throw new DaoException(String.format("查询所有对象列表出错！语句：%s", getSqlName("selectbiao")), e);
+		}
+	}
+	
 	
 }

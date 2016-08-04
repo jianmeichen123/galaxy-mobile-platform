@@ -1,5 +1,7 @@
 package com.galaxyinternet.user.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +53,22 @@ public class UserLogonHisServiceImpl extends BaseServiceImpl<UserLogonHis> imple
 	public Integer queryCountTodayLogon(UserLogonHisBO  UserLogonHisbo)throws Exception{
 		return  logonHisDao.queryCountTodayLogon(UserLogonHisbo);
 	}
-	
+
+
+
+	@Override
+	public List<UserLogonHis> selectAllapp() {
+		// TODO Auto-generated method stub
+		return logonHisDao.selectAllapp();
+	}
+
+
+
+	@Override
+	public List<UserLogonHis> selectBiao() {
+		// TODO Auto-generated method stub
+		return logonHisDao.selectBiao();
+	}
 	
 
 }

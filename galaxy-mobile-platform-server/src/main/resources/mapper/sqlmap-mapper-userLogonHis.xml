@@ -83,4 +83,16 @@
             ]]>	
     </select>
    
+   <select id="selectbiao"  resultType="userLogonHis" parameterType="java.util.Map" >
+    <![CDATA[         
+            SELECT s.user_id as userId,
+            	s.nick_name as nickName,
+            	DATE_FORMAT( MAX(s.init_logon_time), '%Y-%m-%d %H:%i:%s') as inTime,           	
+				COUNT(id) as strCount
+				FROM app_user_login_his s GROUP BY s.user_id
+            ]]>	
+    </select>
+   
+   
+   
 </mapper>
