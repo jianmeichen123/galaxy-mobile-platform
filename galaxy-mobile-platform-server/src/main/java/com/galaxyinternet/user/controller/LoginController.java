@@ -104,8 +104,8 @@ public class LoginController extends BaseControllerImpl<User, UserBo> {
 				UserLogonHisBO logonBo = new UserLogonHisBO();
 				logonBo.setUserId(user.getId());
 				logonBo.setLoginDate(new Date());
-				UserLogonHis userLogon = userLogonHisService.queryUserLogon(logonBo);
-				if(userLogon==null){
+				/*UserLogonHis userLogon = userLogonHisService.queryUserLogon(logonBo);*/
+/*				if(userLogon==null){
 					UserLogonHis userLogonHis = new UserLogonHis();				
 					userLogonHis.setAccessClient(Terminal.IOS.getTerminalName());
 					userLogonHis.setLoginDate(new Date());
@@ -126,8 +126,21 @@ public class LoginController extends BaseControllerImpl<User, UserBo> {
 			
 					userLogonHis.setLogonTimes(userLogon.getLogonTimes()+1);					
 					userLogonHisService.updateUserLogon(userLogonHis);
-				}
+				}*/
+				UserLogonHis userLogonHis = new UserLogonHis();				
+				userLogonHis.setAccessClient(Terminal.IOS.getTerminalName());
+				userLogonHis.setLoginDate(new Date());
 				
+				userLogonHis.setUserId(user.getId());
+				userLogonHis.setNickName(user.getNickName());
+				
+				Date date = new Date();       
+			    Timestamp initdate = new Timestamp(date.getTime()); 
+			    userLogonHis.setLoginDate(date);
+				userLogonHis.setInitLogonTime(initdate);
+							
+				userLogonHis.setLogonTimes(1);					
+				userLogonHisService.saveLogonHis(userLogonHis);
 				
 			}catch(Exception ex){
 				logger.error("保存APP登录记录时发生错误", ex);

@@ -83,4 +83,22 @@
             ]]>	
     </select>
    
+   <select id="selectbiao"  resultType="userLogonHis" parameterType="java.util.Map" >
+    <![CDATA[         
+            SELECT s.user_id as userId,
+            	s.nick_name as nickName,
+            	DATE_FORMAT( MAX(s.init_logon_time), '%Y-%m-%d %H:%i:%s') as inTime,           	
+				COUNT(id) as strCount
+				FROM app_user_login_his s GROUP BY s.user_id
+            ]]>	
+        <if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if> 
+    </select>
+      
+    	<!-- 查询总数 -->
+	<select id="selectCountc" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(id) from app_user_login_his
+	</select> 
+   
 </mapper>

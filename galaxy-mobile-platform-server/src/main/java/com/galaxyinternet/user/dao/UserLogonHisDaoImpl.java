@@ -1,5 +1,8 @@
 package com.galaxyinternet.user.dao;
 
+import java.util.List;
+
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
@@ -7,6 +10,7 @@ import com.galaxyinternet.bo.UserLogonHisBO;
 import com.galaxyinternet.dao.logonHis.UserLogonHisDAO;
 import com.galaxyinternet.framework.core.dao.impl.BaseDaoImpl;
 import com.galaxyinternet.framework.core.exception.DaoException;
+import com.galaxyinternet.framework.core.model.Page;
 import com.galaxyinternet.model.logonHis.UserLogonHis;
 
 @Repository(value="logonHisDao")
@@ -67,5 +71,41 @@ public class UserLogonHisDaoImpl extends BaseDaoImpl<UserLogonHis, Long> impleme
 		}
 		return result;
 	}
+	@Override
+	public List<UserLogonHis> selectAllapp() {
+		try {
+			return sqlSessionTemplate.selectList("selectUserLogonHis");
+		} catch (Exception e) {
+			throw new DaoException(String.format("查询所有对象列表出错！语句：%s", getSqlName("selectUserLogonHis")), e);
+		}
+	}
 	
+	@Override
+	public List<UserLogonHis> selectBiao() {
+		try {
+			return sqlSessionTemplate.selectList("selectbiao");
+		} catch (Exception e) {
+			throw new DaoException(String.format("查询所有对象列表出错！语句：%s", getSqlName("selectbiao")), e);
+		}
+	}
+
+	@Override
+	public Page<UserLogonHis> queryPageListapp(UserLogonHis query, Pageable pageable) {
+		try {
+			List<UserLogonHis> contentList = sqlSessionTemplate.selectList(("selectbiao"),
+					getParams(query, pageable));
+			return new  Page<UserLogonHis>(contentList, pageable, this.selectCountc());
+		} catch (Exception e) {
+			throw new DaoException(String.format("根据分页对象查询列表出错！语句:%s", "selectbiao"), e);
+		}
+	}
+	
+	@Override
+	public Long selectCountc() {
+		try {
+			return sqlSessionTemplate.selectOne("selectCountc");
+		} catch (Exception e) {
+			throw new DaoException(String.format("查询对象总数出错！语句：%s", "selectCountc"), e);
+		}
+	}
 }

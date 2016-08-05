@@ -24,6 +24,11 @@ var platformUrl = {
 	 * 用户管理首页
 	 */
 	userIndex :Constants.platformContentURL+ "galaxy/user",
+	
+	/**
+	 * 用户管理首页
+	 */
+	userDeng :Constants.platformContentURL+ "galaxy/user/userdeng",
 	/**
 	 * 分页查询
 	 */
@@ -96,6 +101,10 @@ var platformUrl = {
 	 * 获取token
 	 */
 	getToken:"galaxy/user/formtoken",
+	/**
+	 * 获取用户列表
+	 */
+	userListapp:"galaxy/user/selectAllapp",
 }
 /**
  * how to use? location.href = platformUrl.login
