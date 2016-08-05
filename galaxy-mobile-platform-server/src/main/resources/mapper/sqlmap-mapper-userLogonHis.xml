@@ -91,8 +91,14 @@
 				COUNT(id) as strCount
 				FROM app_user_login_his s GROUP BY s.user_id
             ]]>	
+        <if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if> 
     </select>
-   
-   
+      
+    	<!-- 查询总数 -->
+	<select id="selectCountc" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(id) from app_user_login_his
+	</select> 
    
 </mapper>

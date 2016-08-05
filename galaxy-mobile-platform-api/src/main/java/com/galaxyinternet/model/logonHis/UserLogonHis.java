@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 import com.galaxyinternet.framework.core.model.BaseEntity;
+import com.galaxyinternet.framework.core.model.Pagable;
 /**
  * APP端用户登录历史记录
  * @author LZJ
@@ -13,7 +14,7 @@ import com.galaxyinternet.framework.core.model.BaseEntity;
  * @Copyright  Galaxyinternet  
  * @date  2016年7月11日 下午5:38:56
  */
-public class UserLogonHis extends BaseEntity {
+public class UserLogonHis extends BaseEntity implements Pagable {
 
 	/**
 	 * 
@@ -30,6 +31,11 @@ public class UserLogonHis extends BaseEntity {
 	private String inTime;
 	//获取用户的登录总数
 	private Long strCount;
+	
+	protected Integer pageSize;
+	protected Integer pageNum;
+
+
 	
 	public Timestamp getLastLogonTime() {
 		return lastLogonTime;
@@ -84,6 +90,39 @@ public class UserLogonHis extends BaseEntity {
 	}
 	public void setInTime(String inTime) {
 		this.inTime = inTime;
+	}
+	
+	public Integer getPageSize() {
+		return pageSize;
+	}
+	public void setPageSize(Integer pageSize) {
+		this.pageSize = pageSize;
+	}
+	public Integer getPageNum() {
+		return pageNum;
+	}
+	public void setPageNum(Integer pageNum) {
+		this.pageNum = pageNum;
+	}
+	@Override
+	public void setDirection(String direction) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public String getDirection() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void setProperty(String property) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public String getProperty() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

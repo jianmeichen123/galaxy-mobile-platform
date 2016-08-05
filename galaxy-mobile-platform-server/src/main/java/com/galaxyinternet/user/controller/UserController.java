@@ -96,6 +96,14 @@ public class UserController extends BaseControllerImpl<User, UserBo> {
 		return"system/user/user_list";
 	}
 
+	@RequestMapping(value = "/userdeng",method = RequestMethod.GET)
+	public String tolist() {
+		
+		return"system/user/user_wer";
+	}
+	
+	
+	
 	/**
 	 * 重置密码 邮件通知
 	 * 
@@ -396,13 +404,14 @@ public class UserController extends BaseControllerImpl<User, UserBo> {
 		}
 		return map;
 	}
+	//TODO
 	/**
 	 * app端获取登录人的列表
 	 * @param request
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/selectAllapp", method = RequestMethod.GET)
+	@RequestMapping(value = "/selectAllapp", method = RequestMethod.POST)
 	public ResponseData<UserLogonHis> selectAllapp(HttpServletRequest request) {
 		
 		
