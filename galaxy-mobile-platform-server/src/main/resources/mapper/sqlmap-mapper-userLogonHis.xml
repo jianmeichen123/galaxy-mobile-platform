@@ -97,8 +97,11 @@
     </select>
       
     	<!-- 查询总数 -->
-	<select id="selectCountc" resultType="java.lang.Long" parameterType="java.util.Map">
+<!-- 	<select id="selectCountc" resultType="java.lang.Long" parameterType="java.util.Map">
 		select count(id) from app_user_login_his
-	</select> 
+	</select>  -->
    
+   	<select id="selectCountc" resultType="java.lang.Long" parameterType="java.util.Map">
+		SELECT COUNT(id) FROM ( SELECT  * FROM app_user_login_his s GROUP BY s.user_id) a
+	</select> 
 </mapper>
