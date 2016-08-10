@@ -10,7 +10,8 @@ import com.galaxyinternet.platform.constant.PlatformConst;
 public enum OperationType {
 	
 	//QUERY					("/galaxy/project/sp", 				PlatformConst.PROJECT_TYPE, "查阅过项目"), 
-	CREATE					("/galaxy/project/ap", 				PlatformConst.PROJECT_TYPE, "创建"), 
+	//CREATE					("/galaxy/project/ap", 				PlatformConst.PROJECT_TYPE, "创建"), 
+	//_6_1_			("/galaxy/project/ap",		PlatformConst.PROJECT_TYPE, "进入接触访谈阶段"),
 	/*UPDATE					("/galaxy/project/up", 				PlatformConst.PROJECT_TYPE, "编辑"), */
 	UPDATE					("/galaxy/project/editProject", 	PlatformConst.PROJECT_TYPE, "编辑"),
 	/*PRO_ADD_PER 			("/galaxy/project/app", 			PlatformConst.PROJECT_TYPE, "添加团队成员"), 
@@ -18,6 +19,8 @@ public enum OperationType {
 	PRO_DEL_PER 			("/galaxy/project/dpp", 			PlatformConst.PROJECT_TYPE, "删除团队成员"), */
 	PRO_INFO    			("/galaxy/project/getProjectInfo", 	PlatformConst.PROJECT_TYPE, "获取项目信息"),
 	PRO_FILE_UP 			("/galaxy/project/stageChange", 	PlatformConst.PROJECT_TYPE, "文档上传"),
+	
+	//_6_2_			("/galaxy/project/startReview",		PlatformConst.PROJECT_TYPE, "进入内部评审阶段"),
 	PRO_START_REVIEW		("/galaxy/project/startReview", 	PlatformConst.PROJECT_TYPE, "启动内部评审"),
 	
 	APPLY_CEO_SCHEDULE  	("/galaxy/approgress/appPq/"+ UrlNumber.one,			PlatformConst.PROJECT_TYPE, "申请CEO评审会会议排期"),
@@ -33,11 +36,11 @@ public enum OperationType {
 	EDIT_MEET_FILE_RECORD	("/galaxy/project/progress/updatemeet",			PlatformConst.PROJECT_TYPE, "编辑"),
 	
 	ADD_VIEW_RECORD			("/galaxy/project/progress/addInterview", 		PlatformConst.PROJECT_TYPE, "添加"),
-	ADD_MEET_RECORD			("/galaxy/project/progress/addmeet", 			PlatformConst.PROJECT_TYPE, "添加会议纪要"),
+	ADD_MEET_RECORD			("/galaxy/projectmeeting/approgress/addIosFileMeetByNoFileTwo", 			PlatformConst.PROJECT_TYPE, "添加"),
 	
 	
 	
-	CLAIM_TASK				("/galaxy/soptask/goClaimtcPage", 				PlatformConst.TASK_TYPE, "认领任务"),
+	CLAIM_TASK				("/galaxy/appSoptask/goClaimtcPage", 				PlatformConst.TASK_TYPE, "认领任务"),
 	COMPLETE_TASK			("/galaxy/soptask/updateTaskStatus", 			PlatformConst.TASK_TYPE, "完成任务"),
 	SUBMIT_TASK              ("/galaxy/soptask/submitTask",                 PlatformConst.TASK_TYPE, "完成任务"),
 
