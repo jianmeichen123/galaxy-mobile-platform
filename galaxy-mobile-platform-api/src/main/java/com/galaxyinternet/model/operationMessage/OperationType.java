@@ -10,7 +10,8 @@ import com.galaxyinternet.platform.constant.PlatformConst;
 public enum OperationType {
 	
 	//QUERY					("/galaxy/project/sp", 				PlatformConst.PROJECT_TYPE, "查阅过项目"), 
-	//CREATE					("/galaxy/project/ap", 				PlatformConst.PROJECT_TYPE, "创建"), 
+	//CREATE					("/galaxy/project/ap", 				PlatformConst.PROJECT_TYPE, "添加了"), 
+	_6_1_			("/galaxy/project/ap",		PlatformConst.PROJECT_TYPE, "进入接触访谈阶段"),
 	//_6_1_			("/galaxy/project/ap",		PlatformConst.PROJECT_TYPE, "进入接触访谈阶段"),
 	/*UPDATE					("/galaxy/project/up", 				PlatformConst.PROJECT_TYPE, "编辑"), */
 	UPDATE					("/galaxy/project/editProject", 	PlatformConst.PROJECT_TYPE, "编辑"),
