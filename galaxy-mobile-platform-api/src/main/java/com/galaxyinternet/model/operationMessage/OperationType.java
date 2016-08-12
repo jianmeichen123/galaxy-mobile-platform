@@ -9,6 +9,10 @@ import com.galaxyinternet.platform.constant.PlatformConst;
  */
 public enum OperationType {
 	
+	
+	//为了商业计划书 产生消息提醒
+	FILE_BUSINESSPLAN("/galaxy/mobile/filemanage/uploadBizplan/" + UrlNumber.one,PlatformConst.PROJECT_TYPE,"上传"),
+	FILE_INTERESTLETTER("/galaxy/mobile/filemanage/uploadBizplan/" + UrlNumber.two,PlatformConst.PROJECT_TYPE,"更新"),
 	//QUERY					("/galaxy/project/sp", 				PlatformConst.PROJECT_TYPE, "查阅过项目"), 
 	//CREATE					("/galaxy/project/ap", 				PlatformConst.PROJECT_TYPE, "添加了"), 
 	_6_1_			("/galaxy/project/ap",		PlatformConst.PROJECT_TYPE, "进入接触访谈阶段"),
