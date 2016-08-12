@@ -54,6 +54,9 @@ public enum OperationType {
 	UPDATE_SCHEDULING		("/galaxy/project/updateReserveTimeByApp/"+ UrlNumber.two, 	PlatformConst.SCHEDULING_TYPE, "更新会议排期"),
 	DELETE_SCHEDULING		("/galaxy/project/updateReserveTimeByApp/"+ UrlNumber.three, PlatformConst.SCHEDULING_TYPE, "删除会议排期"),
 
+	//点击申请投决会排期	
+	_6_7_			("/galaxy/project/smp",		PlatformConst.PROJECT_TYPE, "进入投资决策会阶段"),
+	
 	TASK_URGED				("/galaxy/taskprocess/taskUrged/"+UrlNumber.one, 		PlatformConst.TASK_TYPE, "催办"),
 	TASK_ADD_FILE			("/galaxy/taskprocess/uploadFile/"+UrlNumber.one,		PlatformConst.TASK_TYPE, "上传"),
 	TASK_UPDATE_FILE		("/galaxy/taskprocess/uploadFile/"+UrlNumber.two, 		PlatformConst.TASK_TYPE, "更新");
