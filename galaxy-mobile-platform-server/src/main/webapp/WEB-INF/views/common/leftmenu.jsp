@@ -6,7 +6,8 @@
         </li>
         <li >
         	<a href="javascript:void(-1);" target-url="dictIndex" target="dict">数据字典</a>
-        </li>	
+        </li>
+
 		</ul>
  <script type = "text/javascript">
  	$(".lft").on("click",'a',function(){

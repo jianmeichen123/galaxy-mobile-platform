@@ -1,16 +1,20 @@
 package com.galaxyinternet.user.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.galaxyinternet.bo.UserLogonHisBO;
 import com.galaxyinternet.dao.logonHis.UserLogonHisDAO;
 import com.galaxyinternet.framework.core.dao.BaseDao;
+import com.galaxyinternet.framework.core.model.Page;
 import com.galaxyinternet.framework.core.service.impl.BaseServiceImpl;
 import com.galaxyinternet.model.logonHis.UserLogonHis;
 import com.galaxyinternet.service.UserLogonHisService;
 
-@Service("com.galaxyinternet.user.service.UserLogonHisService")
+@Service("com.galaxyinternet.service.UserLogonHisService")
 public class UserLogonHisServiceImpl extends BaseServiceImpl<UserLogonHis> implements UserLogonHisService {
 	
 	@Autowired
@@ -51,7 +55,30 @@ public class UserLogonHisServiceImpl extends BaseServiceImpl<UserLogonHis> imple
 	public Integer queryCountTodayLogon(UserLogonHisBO  UserLogonHisbo)throws Exception{
 		return  logonHisDao.queryCountTodayLogon(UserLogonHisbo);
 	}
-	
+
+
+
+	@Override
+	public List<UserLogonHis> selectAllapp() {
+		// TODO Auto-generated method stub
+		return logonHisDao.selectAllapp();
+	}
+
+
+
+	@Override
+	public List<UserLogonHis> selectBiao() {
+		// TODO Auto-generated method stub
+		return logonHisDao.selectBiao();
+	}
+
+
+   //app端分页查询
+	@Override
+	public Page<UserLogonHis> queryPageListapp(UserLogonHis query, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return logonHisDao.queryPageListapp(query, pageable);
+	}
 	
 
 }

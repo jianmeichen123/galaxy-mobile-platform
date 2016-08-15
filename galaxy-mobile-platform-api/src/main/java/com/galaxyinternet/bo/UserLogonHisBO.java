@@ -11,14 +11,29 @@ public class UserLogonHisBO extends UserLogonHis {
 	
 	private Integer todayPerson;
 
+	//获取用户的登录总数
+	private Long strCount;
+	
 	public Integer getTodayPerson() {
 		return todayPerson;
 	}
 
+	
 	public void setTodayPerson(Integer todayPerson) {
 		this.todayPerson = todayPerson;
 	}
+
+
+	public Long getStrCount() {
+		return strCount;
+	}
+
+
+	public void setStrCount(Long strCount) {
+		this.strCount = strCount;
+	}
 	
 
+	
  
 }

@@ -132,3 +132,4 @@
 		delete from platform_user_role where id = #{id}
 	</delete>
 </mapper>
+
