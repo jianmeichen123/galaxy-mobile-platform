@@ -20,4 +20,16 @@ public class PlatformConst {
 	public static final String REQUEST_DEPARTMENT = "galax_department";
 	public static final String REQUEST_SCOPE_MESSAGE_TYPE = "galaxy_message_type";
 	public static final String REQUEST_SCOPE_USER_DATA = "galaxy_user_data";
+	
+	public static final String REQUEST_SCOPE_USER_NUM = "galaxy_user_num";
+	public static final String REQUEST_SCOPE_MESSAGE_NUM = "galaxy_message_nums";
+	public static final String REQUEST_SCOPE_MESSAGE_REASON = "galaxy_message_reason";
+	public static final String REQUEST_SCOPE_MESSAGE_STAGE= "galaxy_message_stage";
+	public static final String REQUEST_SCOPE_MESSAGE_BATCH = "galaxy_message_batch";
+	
+	
+	// ios 消息推送
+	public static final String IOS_TITLE_TASK = "任务状态变更";
+	public static final String IOS_TITLE_MEET = "会议通知";
+	
 }

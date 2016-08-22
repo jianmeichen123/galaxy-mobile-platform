@@ -1,6 +1,7 @@
 package com.galaxyinternet.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.domain.Pageable;
 
@@ -105,4 +106,6 @@ public interface UserService extends BaseService<User> {
 	
 	//导入数据用
 	public User queryUserByRealName(String realName);
+	//新增加的方法为了 推送消息 2016/8/22
+	List<User> querytUserByParams(Map<String, Object> params);
 }

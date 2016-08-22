@@ -3,6 +3,7 @@ package com.galaxyinternet.user.service;
 import static com.galaxyinternet.utils.ValidationUtil.throwPlatformException;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -312,4 +313,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 		return userDao.selectByRealName(realName);
 	}
 
+	//新增的方法
+	public List<User> querytUserByParams(Map<String, Object> params) {
+		return userDao.selectUserByParams(params);
+	}
+	
 }
