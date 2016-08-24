@@ -71,11 +71,16 @@ public class LoginController extends BaseControllerImpl<User, UserBo> {
 		String email = user.getEmail();
 		String password = user.getPassword();
 
+		
+		
 		if (StringUtils.isBlank(email) || StringUtils.isBlank(password)) {
 			responsebody.setResult(new Result(Status.ERROR, Constants.IS_UP_EMPTY, "用户名或密码不能为空！"));
 			return responsebody;
 		}
 		user = userService.queryUserByUP(user);
+		
+		
+		
 		if (user == null) {
 			responsebody.setResult(new Result(Status.ERROR, Constants.IS_UP_WRONG, "用户名或密码错误！"));
 		} else {
@@ -130,7 +135,11 @@ public class LoginController extends BaseControllerImpl<User, UserBo> {
 				UserLogonHis userLogonHis = new UserLogonHis();				
 				userLogonHis.setAccessClient(Terminal.IOS.getTerminalName());
 				userLogonHis.setLoginDate(new Date());
-				
+				//增加版本号 2016/8/23 
+				if(user.getVersion()!=null){
+					userLogonHis.setAppVersion(user.getVersion());
+				}
+				/*userLogonHis.setAppVersion("1.4");*/
 				userLogonHis.setUserId(user.getId());
 				userLogonHis.setNickName(user.getNickName());
 				
@@ -138,7 +147,7 @@ public class LoginController extends BaseControllerImpl<User, UserBo> {
 			    Timestamp initdate = new Timestamp(date.getTime()); 
 			    userLogonHis.setLoginDate(date);
 				userLogonHis.setInitLogonTime(initdate);
-							
+				/*userLogonHis*/
 				userLogonHis.setLogonTimes(1);					
 				userLogonHisService.saveLogonHis(userLogonHis);
 				
