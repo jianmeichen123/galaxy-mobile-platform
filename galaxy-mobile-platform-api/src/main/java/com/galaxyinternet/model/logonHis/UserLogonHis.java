@@ -27,6 +27,8 @@ public class UserLogonHis extends BaseEntity implements Pagable {
 	private Timestamp  initLogonTime ; // '首次登录时间',
 	private Timestamp  lastLogonTime ;  // '最后登录时间',
 	private Integer  logonTimes;  //'当天登录累计次数',
+	//新增app端版本号
+	private String appVersion;
 	//定义的返回时间
 	private String inTime;
 	//获取用户的登录总数
@@ -35,7 +37,9 @@ public class UserLogonHis extends BaseEntity implements Pagable {
 	protected Integer pageSize;
 	protected Integer pageNum;
 
-
+	
+	protected String direction;// asc,desc
+	protected String property;// 排序的字段名称
 	
 	public Timestamp getLastLogonTime() {
 		return lastLogonTime;
@@ -104,28 +108,30 @@ public class UserLogonHis extends BaseEntity implements Pagable {
 	public void setPageNum(Integer pageNum) {
 		this.pageNum = pageNum;
 	}
-	@Override
-	public void setDirection(String direction) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
+
+
 	public String getDirection() {
-		// TODO Auto-generated method stub
-		return null;
+		return direction;
 	}
-	@Override
-	public void setProperty(String property) {
-		// TODO Auto-generated method stub
-		
+	public void setDirection(String direction) {
+		this.direction = direction;
 	}
-	@Override
 	public String getProperty() {
-		// TODO Auto-generated method stub
-		return null;
+		return property;
+	}
+	public void setProperty(String property) {
+		this.property = property;
+	}
+	public String getAppVersion() {
+		return appVersion;
+	}
+	public void setAppVersion(String appVersion) {
+		this.appVersion = appVersion;
 	}
 
 
+
+	
 	
 	
 }

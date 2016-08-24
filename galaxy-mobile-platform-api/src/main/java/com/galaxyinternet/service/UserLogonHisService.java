@@ -28,4 +28,6 @@ public interface UserLogonHisService extends BaseService<UserLogonHis>{
 	public Page<UserLogonHis> queryPageListapp(UserLogonHis query, Pageable pageable);
 	
 
+	
+
 }
