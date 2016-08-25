@@ -3,8 +3,7 @@ package com.galaxyinternet.model.logonHis;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import com.galaxyinternet.framework.core.model.BaseEntity;
-import com.galaxyinternet.framework.core.model.Pagable;
+import com.galaxyinternet.framework.core.model.PagableEntity;
 /**
  * APP端用户登录历史记录
  * @author LZJ
@@ -14,12 +13,15 @@ import com.galaxyinternet.framework.core.model.Pagable;
  * @Copyright  Galaxyinternet  
  * @date  2016年7月11日 下午5:38:56
  */
-public class UserLogonHis extends BaseEntity implements Pagable {
+public class UserLogonHis extends PagableEntity {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5719879013966408286L;
+	private static final long serialVersionUID = 1L;
+
+
+	
 	private String accessClient ; // '访问客户端名称',
 	private long userId  ; // '用户ID',
 	private String  nickName; //'登录名称',
@@ -34,12 +36,7 @@ public class UserLogonHis extends BaseEntity implements Pagable {
 	//获取用户的登录总数
 	private Long strCount;
 	
-	protected Integer pageSize;
-	protected Integer pageNum;
 
-	
-	protected String direction;// asc,desc
-	protected String property;// 排序的字段名称
 	
 	public Timestamp getLastLogonTime() {
 		return lastLogonTime;
@@ -96,32 +93,6 @@ public class UserLogonHis extends BaseEntity implements Pagable {
 		this.inTime = inTime;
 	}
 	
-	public Integer getPageSize() {
-		return pageSize;
-	}
-	public void setPageSize(Integer pageSize) {
-		this.pageSize = pageSize;
-	}
-	public Integer getPageNum() {
-		return pageNum;
-	}
-	public void setPageNum(Integer pageNum) {
-		this.pageNum = pageNum;
-	}
-
-
-	public String getDirection() {
-		return direction;
-	}
-	public void setDirection(String direction) {
-		this.direction = direction;
-	}
-	public String getProperty() {
-		return property;
-	}
-	public void setProperty(String property) {
-		this.property = property;
-	}
 	public String getAppVersion() {
 		return appVersion;
 	}
