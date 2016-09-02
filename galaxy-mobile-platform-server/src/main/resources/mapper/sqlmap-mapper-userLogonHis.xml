@@ -9,7 +9,8 @@
 			   login_date  as  loginDate ,
 			   init_logon_time as initLogonTime ,
 			   last_logon_time  as  lastLogonTime ,
-			   logon_times   as logonTimes
+			   logon_times   as logonTimes,
+			   app_version as appVersion
     </sql>
     
     <sql id="Base_Where_Condition">
@@ -23,6 +24,7 @@
 				          <if test="initLogonTime !=null">  and  init_logon_time = #{initLogonTime , jdbcType=DATETIME }</if>
 				          <if test="lastLogonTime !=null">  and  last_logon_time = #{lastLogonTime , jdbcType=DATETIME }</if>
 				          <if test="logonTimes !=null">  and  logon_times = #{logonTimes , jdbcType=SMALLINT }</if>
+				          <if test="appVersion !=null">  and  app_version = #{appVersion , jdbcType=VARCHAR }</if>
 					</trim>
 		</where>
    </sql>
@@ -57,7 +59,8 @@
 			   login_date ,
 			   init_logon_time ,
 			   last_logon_time ,
-			   logon_times 
+			   logon_times ,
+			   app_version
 			) 
 		VALUES
 			  (
@@ -68,7 +71,8 @@
 			   #{loginDate} ,
 			   #{initLogonTime} ,
 			   #{lastLogonTime} ,
-			   #{logonTimes}
+			   #{logonTimes} ,
+			   #{appVersion}
 			  )
 	    ]]>
     </insert>
@@ -85,15 +89,18 @@
    
    <select id="selectbiao"  resultType="userLogonHis" parameterType="java.util.Map" >
     <![CDATA[         
-            SELECT s.user_id as userId,
-            	s.nick_name as nickName,
-            	DATE_FORMAT( MAX(s.init_logon_time), '%Y-%m-%d %H:%i:%s') as inTime,           	
-				COUNT(id) as strCount
-				FROM app_user_login_his s GROUP BY s.user_id
+				SELECT a.user_id AS userId,
+				a.nick_name AS nickName,
+				DATE_FORMAT( a.init_logon_time, '%Y-%m-%d %H:%i:%s') AS inTime, 
+				a.app_version AS appVersion,
+				COUNT(id) AS strCount
+			    FROM (SELECT * FROM app_user_login_his s  ORDER BY (s.init_logon_time) DESC ) a GROUP BY a.user_id
+
             ]]>	
         <if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if> 
+		<if test="sorting != null">order by ${sorting}</if>
     </select>
       
     	<!-- 查询总数 -->
