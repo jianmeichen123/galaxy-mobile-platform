@@ -3,6 +3,7 @@ package com.galaxyinternet.user.service;
 import static com.galaxyinternet.utils.ValidationUtil.throwPlatformException;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -241,6 +242,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 	public User queryUserByUP(User user) {
 		String email = PWDUtils.decodePasswordByBase64(user.getEmail());
 		String password = PWDUtils.decodePasswordByBase64(user.getPassword());
+		String version = user.getVersion();
 		password = PWDUtils.genernateNewPassword(password); // 重新加密password
 		user.setEmail(email);
 		user.setPassword(password);
@@ -250,6 +252,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 		}
 		if (isUserNormal(user)) {
 
+			user.setVersion(version);
 			Department dept = getDepartmentByUserId(user.getId()); // 查询user的角色和部门
 			Role role = getRoleByUserId(user.getId());
 			if (role != null) {
@@ -312,4 +315,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 		return userDao.selectByRealName(realName);
 	}
 
+	//新增的方法
+	public List<User> querytUserByParams(Map<String, Object> params) {
+		return userDao.selectUserByParams(params);
+	}
+	
 }

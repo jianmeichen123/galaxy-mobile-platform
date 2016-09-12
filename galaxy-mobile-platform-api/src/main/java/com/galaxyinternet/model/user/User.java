@@ -42,6 +42,11 @@ public class User extends BaseUser {
 	private String address;// 地址
 	private Boolean isAdmin;// 是否管理员
 	
+	//2016/8/23 修改app端获取当前登录人的版本号
+	private String version;
+	
+	
+	
 	public List<Long> getIds() {
 		return ids;
 	}
@@ -228,4 +233,14 @@ public class User extends BaseUser {
 	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
 	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+	
+	
 }

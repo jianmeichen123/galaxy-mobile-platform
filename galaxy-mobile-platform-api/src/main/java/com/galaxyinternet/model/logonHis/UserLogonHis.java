@@ -3,8 +3,7 @@ package com.galaxyinternet.model.logonHis;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import com.galaxyinternet.framework.core.model.BaseEntity;
-import com.galaxyinternet.framework.core.model.Pagable;
+import com.galaxyinternet.framework.core.model.PagableEntity;
 /**
  * APP端用户登录历史记录
  * @author LZJ
@@ -14,12 +13,15 @@ import com.galaxyinternet.framework.core.model.Pagable;
  * @Copyright  Galaxyinternet  
  * @date  2016年7月11日 下午5:38:56
  */
-public class UserLogonHis extends BaseEntity implements Pagable {
+public class UserLogonHis extends PagableEntity {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5719879013966408286L;
+	private static final long serialVersionUID = 1L;
+
+
+	
 	private String accessClient ; // '访问客户端名称',
 	private long userId  ; // '用户ID',
 	private String  nickName; //'登录名称',
@@ -27,14 +29,13 @@ public class UserLogonHis extends BaseEntity implements Pagable {
 	private Timestamp  initLogonTime ; // '首次登录时间',
 	private Timestamp  lastLogonTime ;  // '最后登录时间',
 	private Integer  logonTimes;  //'当天登录累计次数',
+	//新增app端版本号
+	private String appVersion;
 	//定义的返回时间
 	private String inTime;
 	//获取用户的登录总数
 	private Long strCount;
 	
-	protected Integer pageSize;
-	protected Integer pageNum;
-
 
 	
 	public Timestamp getLastLogonTime() {
@@ -92,40 +93,16 @@ public class UserLogonHis extends BaseEntity implements Pagable {
 		this.inTime = inTime;
 	}
 	
-	public Integer getPageSize() {
-		return pageSize;
+	public String getAppVersion() {
+		return appVersion;
 	}
-	public void setPageSize(Integer pageSize) {
-		this.pageSize = pageSize;
-	}
-	public Integer getPageNum() {
-		return pageNum;
-	}
-	public void setPageNum(Integer pageNum) {
-		this.pageNum = pageNum;
-	}
-	@Override
-	public void setDirection(String direction) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public String getDirection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void setProperty(String property) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public String getProperty() {
-		// TODO Auto-generated method stub
-		return null;
+	public void setAppVersion(String appVersion) {
+		this.appVersion = appVersion;
 	}
 
 
+
+	
 	
 	
 }

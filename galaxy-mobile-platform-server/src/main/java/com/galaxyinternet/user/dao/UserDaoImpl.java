@@ -1,12 +1,12 @@
 package com.galaxyinternet.user.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import com.galaxyinternet.dao.user.UserDao;
 import com.galaxyinternet.framework.core.dao.impl.BaseDaoImpl;
-import com.galaxyinternet.model.department.Department;
 import com.galaxyinternet.model.user.User;
 
 @Repository("userDao")
@@ -36,4 +36,12 @@ public class UserDaoImpl extends BaseDaoImpl<User, Long>implements UserDao {
 		return sqlSessionTemplate.selectOne(getSqlName("selectByRealName"),
 				realName);
 	}
+	//新增的方法 2016/8/22
+	@Override
+	public List<User> selectUserByParams(Map<String, Object> params) {
+		return sqlSessionTemplate.selectList(getSqlName("selectUserByParams"),params);
+	}
+	
+	
+	
 }

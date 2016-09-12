@@ -1,5 +1,7 @@
 package com.galaxyinternet.model.user;
 
+import java.util.List;
+
 import com.galaxyinternet.framework.core.model.BaseEntity;
 
 public class UserRole extends BaseEntity {
@@ -12,6 +14,10 @@ public class UserRole extends BaseEntity {
 	private Long userId;
 	
 	private Long roleId;
+	
+	
+	//新增2016/8/22 
+	private List<Long> roleIdList;
 
 	public Long getUserId() {
 		return userId;
@@ -27,6 +33,14 @@ public class UserRole extends BaseEntity {
 
 	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
+	}
+
+	public List<Long> getRoleIdList() {
+		return roleIdList;
+	}
+
+	public void setRoleIdList(List<Long> roleIdList) {
+		this.roleIdList = roleIdList;
 	}
 	
 	
