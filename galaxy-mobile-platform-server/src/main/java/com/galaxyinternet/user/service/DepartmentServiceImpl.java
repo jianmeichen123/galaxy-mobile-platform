@@ -33,6 +33,12 @@ public class DepartmentServiceImpl extends BaseServiceImpl<Department>implements
 		// TODO Auto-generated method stub
 		return departmentDao.selectListById(idList);
 	}
+
+	@Override
+	public List<Department> queryAppListByType(Integer belongType) {
+		// TODO Auto-generated method stub
+		return departmentDao.queryAppListByType(belongType);
+	}
 	
 	
 	
