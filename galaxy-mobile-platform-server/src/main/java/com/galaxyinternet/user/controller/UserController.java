@@ -453,8 +453,14 @@ public class UserController extends BaseControllerImpl<User, UserBo> {
 			DepartmentApp dee = new DepartmentApp();
 			dee.setDepartmentList(deptListtt);
 			dee.setName("融快");
-			
 			deptList.add(dee);
+			
+			Integer belongTypee3= 3;
+			List<Department> deptListtt3=departmentService.queryAppListByType(belongTypee3);
+			DepartmentApp dee3 = new DepartmentApp();
+			dee3.setDepartmentList(deptListtt3);
+			dee3.setName("创保联");			
+			deptList.add(dee3);
 			
 			responseBody.setEntityList(deptList);
 			responseBody.setResult(new Result(Status.OK, ""));
