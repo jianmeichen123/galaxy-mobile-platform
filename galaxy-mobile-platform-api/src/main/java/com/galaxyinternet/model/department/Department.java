@@ -21,7 +21,8 @@ public class Department extends BaseEntity {
     
     //当前登录用户是否是该部门
     private boolean isCurrentUser;
-    
+    //2016/9/19 新增字段为了 2016-10-14新上线
+    private Integer belongType; 
     
 	public boolean isCurrentUser() {
 		return isCurrentUser;
@@ -69,6 +70,14 @@ public class Department extends BaseEntity {
 
 	public void setType(Integer type) {
 		this.type = type;
+	}
+
+	public Integer getBelongType() {
+		return belongType;
+	}
+
+	public void setBelongType(Integer belongType) {
+		this.belongType = belongType;
 	}
     
     

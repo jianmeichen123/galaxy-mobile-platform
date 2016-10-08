@@ -20,4 +20,10 @@ public class DepartmentDaoImpl extends BaseDaoImpl<Department, Long>implements D
 	public List<Department> selectListById(List<String> idList) {
 		return sqlSessionTemplate.selectList(getSqlName("selectListById"),idList);
 	}
+	
+	
+	@Override
+	public List<Department> queryAppListByType(Integer belongType) {
+		return sqlSessionTemplate.selectList(getSqlName("queryAppListByType"), belongType);
+	}
 }
