@@ -1,6 +1,7 @@
 package com.galaxyinternet.user.controller;
 import static com.galaxyinternet.framework.core.form.Token.TOKEN;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,6 +46,7 @@ import com.galaxyinternet.framework.core.utils.mail.MailTemplateUtils;
 import com.galaxyinternet.framework.core.utils.mail.SimpleMailSender;
 import com.galaxyinternet.framework.core.validator.ValidatorResultHandler;
 import com.galaxyinternet.model.department.Department;
+import com.galaxyinternet.model.department.DepartmentApp;
 import com.galaxyinternet.model.logonHis.UserLogonHis;
 import com.galaxyinternet.model.user.User;
 import com.galaxyinternet.service.DepartmentService;
@@ -421,6 +424,64 @@ public class UserController extends BaseControllerImpl<User, UserBo> {
 		responseBody.setEntityList(sl);
 		return responseBody;
 	}
+	
+	/**
+	 * app端 获取部门列表
+	 * @author gxc 
+	 * @return 
+	 * @version 2.2.10 app10月14号上线的版本
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/departmentListAPP", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseData<DepartmentApp> departmentListAPP(
+			HttpServletRequest request) {
+		
+		ResponseData<DepartmentApp> responseBody = new ResponseData<DepartmentApp>();
+		try {
+
+			List<DepartmentApp> deptList = new ArrayList<DepartmentApp>();
+			
+			Integer belongType= 1;
+			List<Department> deptListt=departmentService.queryAppListByType(belongType);
+			DepartmentApp de = new DepartmentApp();
+			de.setDepartmentList(deptListt);
+			de.setName("星河互联");
+			deptList.add(de);
+			
+			Integer belongTypee= 2;
+			List<Department> deptListtt=departmentService.queryAppListByType(belongTypee);
+			DepartmentApp dee = new DepartmentApp();
+			dee.setDepartmentList(deptListtt);
+			dee.setName("融快");
+			deptList.add(dee);
+			
+			Integer belongTypee3= 3;
+			List<Department> deptListtt3=departmentService.queryAppListByType(belongTypee3);
+			DepartmentApp dee3 = new DepartmentApp();
+			dee3.setDepartmentList(deptListtt3);
+			dee3.setName("创保联");			
+			deptList.add(dee3);
+			
+			responseBody.setEntityList(deptList);
+			responseBody.setResult(new Result(Status.OK, ""));
+			return responseBody;
+
+		} catch (PlatformException e) {
+			responseBody
+					.setResult(new Result(Status.ERROR, "departmentList faild"));
+
+			if (logger.isErrorEnabled()) {
+				logger.error("departmentList ", e);
+			}
+		}
+		return responseBody;
+	}
+
+	
+	
+	
+	
+	
 	
 	
 	

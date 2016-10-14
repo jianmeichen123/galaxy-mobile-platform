@@ -27,6 +27,8 @@ public interface DepartmentService extends BaseService<Department> {
 	 */
 	public List<Department> queryListById(List<String> idList);
 	
+
+	List<Department> queryAppListByType(Integer belongType);
 	
 }
 

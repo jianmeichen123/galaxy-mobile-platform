@@ -10,4 +10,7 @@ public interface DepartmentDao extends BaseDao<Department, Long> {
 	List<Department> queryListByType(Integer type);
 	
 	public List<Department> selectListById(List<String> idList);
+	
+	List<Department> queryAppListByType(Integer belongType);
+	
 }
