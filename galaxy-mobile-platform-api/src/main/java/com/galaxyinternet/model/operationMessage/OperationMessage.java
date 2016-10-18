@@ -43,6 +43,12 @@ public class OperationMessage extends BaseEntity{
 	private List<String> messageList;
 	
 	
+	
+	//2016/10/17 修改 消息 app端新增已读 未读   逻辑删除和不删除的字段 
+	private Integer appSign; //标识消息已读未读 
+	private Integer appDelete; //标识消息已删除 未删除
+	
+	
 	public String getDepartment() {
 		return department;
 	}
@@ -138,6 +144,22 @@ public class OperationMessage extends BaseEntity{
 	
 
 	
+	
+	
+	
+	public Integer getAppSign() {
+		return appSign;
+	}
+	public void setAppSign(Integer appSign) {
+		this.appSign = appSign;
+	}
+
+	public Integer getAppDelete() {
+		return appDelete;
+	}
+	public void setAppDelete(Integer appDelete) {
+		this.appDelete = appDelete;
+	}
 	public Serializable getUserData() {
 		return userData;
 	}

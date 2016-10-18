@@ -18,13 +18,15 @@
 		 <result 	column="operator_deparement_id" 	property="operatorDepartmentId" jdbcType="BIGINT" />
 		 <result 	column="belong_department_id" 		property="belongDepartmentId" 	jdbcType="BIGINT" />
 		 <result 	column="message_type" 	property="messageType" 	jdbcType="VARCHAR" />
+		 <result 	column="app_sign" 		property="appSign"  		jdbcType="INTEGER" />
+		 <result 	column="app_delete" 		property="appDelete"  		jdbcType="INTEGER" />
 
 	</resultMap>
 	
 	<sql id="Base_Column_List">
 		id,department,role,type,project_name,
 		operator,content,created_time,module,belong_uid,belong_uname,project_id,
-		operator_id,operator_deparement_id,belong_department_id,message_type
+		operator_id,operator_deparement_id,belong_department_id,message_type,app_sign,app_delete
 	</sql>
 
 
@@ -36,11 +38,11 @@
 	       	 t_operation_message (
 				department,role,type,project_name,module,belong_uid,belong_uname,
 				operator,content,project_id,created_time,
-				operator_id,operator_deparement_id,belong_department_id,message_type
+				operator_id,operator_deparement_id,belong_department_id,message_type,app_sign,app_delete
 	        ) VALUES (
 	        	#{department},#{role},#{type},#{projectName},#{module},#{belongUid},#{belongUname},
 	        	#{operator},#{content},#{projectId},#{createdTime},
-	        	#{operatorId},#{operatorDepartmentId},#{belongDepartmentId},#{messageType}
+	        	#{operatorId},#{operatorDepartmentId},#{belongDepartmentId},#{messageType},#{appSign},#{appDelete}
 	        )
     </insert>
     
@@ -53,6 +55,7 @@
 				<if test="type != null"> AND type = #{type}</if>
 				<if test="module != null"> AND module = #{module}</if>
 				<if test="createdTimeStart != null"> AND created_time >= #{createdTimeStart}</if>
+				<if test="appDelete != null"> AND app_delete = #{appDelete}</if>
 				<if test="createdTimeEnd != null"> AND   #{createdTimeEnd} >= created_time </if>
 				<if test="operatorDepartmentId != null"> AND  operator_deparement_id = #{operatorDepartmentId}  </if>
 				<if test="projectIds != null"> 
@@ -142,5 +145,32 @@
 		WHERE
 			operator_id = #{operatorId}	
 	</select>	
+	
+    <!-- 通过ID更新 2016/10/17 修改 消息列表 -->
+	<update id="updateById" parameterType="OperationMessagePO">
+		update t_operation_message
+		<set>
+			<if test="department != null" > department = #{department,jdbcType=VARCHAR}, </if>
+			<if test="role != null" > role = #{role,jdbcType=VARCHAR}, </if>
+			<if test="type != null" > type = #{type,jdbcType=VARCHAR}, </if>
+			<if test="projectName != null" > project_name = #{projectName,jdbcType=VARCHAR}, </if>
+			<if test="projectId != null" > project_id = #{projectId,jdbcType=BIGINT}, </if>
+			<if test="operator != null" > operator = #{operator,jdbcType=VARCHAR}, </if>
+			<if test="content != null" > content = #{content,jdbcType=VARCHAR}, </if>
+			<if test="module != null" > module = #{module,jdbcType=INTEGER}, </if>
+			<if test="belongUid != null" > belong_uid = #{belongUid,jdbcType=BIGINT}, </if>
+			<if test="belongUname != null" > belong_uname = #{belongUname,jdbcType=VARCHAR}, </if>
+			<if test="createdTime != null" > created_time = #{createdTime,jdbcType=BIGINT}, </if>
+			<if test="operatorDepartmentId != null" > operator_deparement_id = #{operatorDepartmentId,jdbcType=BIGINT}, </if>
+			<if test="belongDepartmentId != null" > belong_department_id = #{belongDepartmentId,jdbcType=BIGINT}, </if>
+			<if test="messageType != null" > message_type = #{messageType,jdbcType=VARCHAR}, </if>
+			<if test="appSign != null" > app_sign = #{appSign,jdbcType=INTEGER}, </if>
+			<if test="appDelete != null" > app_delete = #{appDelete,jdbcType=INTEGER}, </if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	
+	
 	
 </mapper>
