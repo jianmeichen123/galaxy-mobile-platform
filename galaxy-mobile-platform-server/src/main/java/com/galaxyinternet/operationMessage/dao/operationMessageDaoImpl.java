@@ -2,12 +2,16 @@ package com.galaxyinternet.operationMessage.dao;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
+import com.galaxyinternet.bo.OperationMessageBo;
 import com.galaxyinternet.dao.operationMessage.OperationMessageDao;
+import com.galaxyinternet.framework.core.constants.SqlId;
 import com.galaxyinternet.framework.core.dao.impl.BaseDaoImpl;
 import com.galaxyinternet.framework.core.exception.DaoException;
+import com.galaxyinternet.framework.core.model.Page;
 import com.galaxyinternet.model.operationMessage.OperationMessage;
 
 @Repository("operationMessageDao")
@@ -22,5 +26,18 @@ public class operationMessageDaoImpl extends BaseDaoImpl<OperationMessage, Long>
 			throw new DaoException(String.format("根据操作人查询项目id出错！语句：%s", getSqlName("selectProjecIdsByOperator")), e);
 		}
 	}
+
+	//新增的获取消息列表
+	@Override
+	public Page<OperationMessage> selectListMessage(OperationMessageBo query, Pageable pageable) {
+		try {
+			List<OperationMessage> contentList = sqlSessionTemplate.selectList(getSqlName("selectListMessage"),
+					getParams(query, pageable));
+			return new  Page<OperationMessage>(contentList, pageable, this.selectCount(query));
+		} catch (Exception e) {
+			throw new DaoException(String.format("根据分页对象查询列表出错！语句:%s", getSqlName("selectListMessage")), e);
+		}
+	}
+	
 	
 }

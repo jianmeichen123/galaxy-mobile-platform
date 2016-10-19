@@ -1,5 +1,9 @@
 package com.galaxyinternet.service;
 
+import org.springframework.data.domain.Pageable;
+
+import com.galaxyinternet.bo.OperationMessageBo;
+import com.galaxyinternet.framework.core.model.Page;
 import com.galaxyinternet.framework.core.service.BaseService;
 import com.galaxyinternet.model.operationMessage.OperationMessage;
 
@@ -10,4 +14,6 @@ public interface OperationMessageService extends BaseService<OperationMessage> {
 	
 	Long selectCount(OperationMessage query);
 	
+	//添加分页对象 为新的消息列表 
+	Page<OperationMessage> selectListMessage(OperationMessageBo query, Pageable pageable);
 }
