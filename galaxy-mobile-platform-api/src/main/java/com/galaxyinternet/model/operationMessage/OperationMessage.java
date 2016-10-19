@@ -48,6 +48,9 @@ public class OperationMessage extends BaseEntity{
 	private Integer appSign; //标识消息已读未读 
 	private Integer appDelete; //标识消息已删除 未删除
 	
+	private Integer isDelete;
+	private Integer isRead;
+	private String userId;
 	
 	public String getDepartment() {
 		return department;
@@ -147,6 +150,24 @@ public class OperationMessage extends BaseEntity{
 	
 	
 	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public Integer getIsDelete() {
+		return isDelete;
+	}
+	public void setIsDelete(Integer isDelete) {
+		this.isDelete = isDelete;
+	}
+	public Integer getIsRead() {
+		return isRead;
+	}
+	public void setIsRead(Integer isRead) {
+		this.isRead = isRead;
+	}
 	public Integer getAppSign() {
 		return appSign;
 	}
