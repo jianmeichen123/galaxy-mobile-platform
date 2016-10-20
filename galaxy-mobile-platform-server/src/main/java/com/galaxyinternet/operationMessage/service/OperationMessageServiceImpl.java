@@ -3,6 +3,8 @@ package com.galaxyinternet.operationMessage.service;
 import static com.galaxyinternet.utils.ValidationUtil.isMoreThan;
 import static com.galaxyinternet.utils.ValidationUtil.isNull;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -77,6 +79,12 @@ public class OperationMessageServiceImpl extends BaseServiceImpl<OperationMessag
 	public Page<OperationMessage> selectListMessage(OperationMessageBo query, Pageable pageable) {
 		
 		return operationMessageDao.selectListMessage(query, pageable);
+	}
+
+	@Override
+	public List<OperationMessage> selectList(OperationMessageBo queryo) {
+		
+		return operationMessageDao.selectList(queryo);
 	}
 
 
