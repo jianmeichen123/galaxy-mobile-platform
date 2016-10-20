@@ -16,4 +16,6 @@ public interface OperationMessageDao extends BaseDao<OperationMessage, Long>{
 	//新增的消息列表
 	Page<OperationMessage> selectListMessage(OperationMessageBo query, Pageable pageable);
 	
+	//消息列表
+	List<OperationMessage> selectList(OperationMessageBo query);
 }
