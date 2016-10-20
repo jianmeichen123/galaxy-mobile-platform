@@ -45,9 +45,7 @@ public class OperationMessage extends BaseEntity{
 	
 	
 	//2016/10/17 修改 消息 app端新增已读 未读   逻辑删除和不删除的字段 
-	private Integer appSign; //标识消息已读未读 
-	private Integer appDelete; //标识消息已删除 未删除
-	
+
 	private Integer isDelete;
 	private Integer isRead;
 	private String userId;
@@ -168,19 +166,7 @@ public class OperationMessage extends BaseEntity{
 	public void setIsRead(Integer isRead) {
 		this.isRead = isRead;
 	}
-	public Integer getAppSign() {
-		return appSign;
-	}
-	public void setAppSign(Integer appSign) {
-		this.appSign = appSign;
-	}
 
-	public Integer getAppDelete() {
-		return appDelete;
-	}
-	public void setAppDelete(Integer appDelete) {
-		this.appDelete = appDelete;
-	}
 	public Serializable getUserData() {
 		return userData;
 	}
