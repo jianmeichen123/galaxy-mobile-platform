@@ -18,6 +18,8 @@ public class OperationMessageBo extends OperationMessage  implements Pagable{
 	private List<String> inPer;
 	private List<String> inPat;
 	
+
+	
 	public List<String> getMessageTypes()
 	{
 		return messageTypes;

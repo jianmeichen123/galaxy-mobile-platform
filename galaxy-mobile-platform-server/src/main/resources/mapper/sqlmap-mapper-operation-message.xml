@@ -17,8 +17,10 @@
 		 <result 	column="created_time" 	property="createdTime" 	jdbcType="BIGINT" />
 		 <result 	column="operator_deparement_id" 	property="operatorDepartmentId" jdbcType="BIGINT" />
 		 <result 	column="belong_department_id" 		property="belongDepartmentId" 	jdbcType="BIGINT" />
-		 <result 	column="message_type" 	property="messageType" 	jdbcType="VARCHAR" />
-
+		 <result 	column="message_type" 	property="messageType" 	jdbcType="VARCHAR" />		 
+		 <result 	column="is_read" 		property="isRead"  		jdbcType="INTEGER" />
+		 <result 	column="is_delete" 		property="isDelete"  		jdbcType="INTEGER" />
+		  <result 	column="user_id" 		property="userId"  		jdbcType="VARCHAR" />		
 	</resultMap>
 	
 	<sql id="Base_Column_List">
@@ -142,5 +144,150 @@
 		WHERE
 			operator_id = #{operatorId}	
 	</select>	
+	
+    <!-- 通过ID更新 2016/10/17 修改 消息列表 -->
+	<update id="updateById" parameterType="OperationMessagePO">
+		update t_operation_message
+		<set>
+			<if test="department != null" > department = #{department,jdbcType=VARCHAR}, </if>
+			<if test="role != null" > role = #{role,jdbcType=VARCHAR}, </if>
+			<if test="type != null" > type = #{type,jdbcType=VARCHAR}, </if>
+			<if test="projectName != null" > project_name = #{projectName,jdbcType=VARCHAR}, </if>
+			<if test="projectId != null" > project_id = #{projectId,jdbcType=BIGINT}, </if>
+			<if test="operator != null" > operator = #{operator,jdbcType=VARCHAR}, </if>
+			<if test="content != null" > content = #{content,jdbcType=VARCHAR}, </if>
+			<if test="module != null" > module = #{module,jdbcType=INTEGER}, </if>
+			<if test="belongUid != null" > belong_uid = #{belongUid,jdbcType=BIGINT}, </if>
+			<if test="belongUname != null" > belong_uname = #{belongUname,jdbcType=VARCHAR}, </if>
+			<if test="createdTime != null" > created_time = #{createdTime,jdbcType=BIGINT}, </if>
+			<if test="operatorDepartmentId != null" > operator_deparement_id = #{operatorDepartmentId,jdbcType=BIGINT}, </if>
+			<if test="belongDepartmentId != null" > belong_department_id = #{belongDepartmentId,jdbcType=BIGINT}, </if>
+			<if test="messageType != null" > message_type = #{messageType,jdbcType=VARCHAR}, </if>		
+		</set>
+		where id = #{id}
+	</update>
+	
+<!-- 	<select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+			SELECT * FROM (SELECT 
+			  s.*,
+			  CASE WHEN  a.`is_read` IS NULL THEN 0 ELSE a.`is_read` END is_read,
+			  CASE WHEN  d.is_delete IS NULL THEN 0 ELSE d.`is_delete` END is_delete,
+			  CASE WHEN  a.user_id   IS NULL THEN NULL ELSE a.`user_id` END aUserId,
+			  CASE WHEN  d.user_id   IS NULL THEN NULL ELSE d.`user_id` END dUserId	
+			 FROM t_operation_message s  
+			LEFT JOIN app_sign a ON s.`id`=a.`message_id`
+			LEFT JOIN app_delete d ON s.id=d.message_id) n
+			
+			<where>
+			<trim prefixOverrides="and|or">
+				<if test="messageTypes != null"> 
+						AND n.`message_type` IN
+								<foreach collection="messageTypes" index="item" item="item" open="(" separator="," close=")">
+						            #{item}
+						        </foreach>
+			   </if>
+			   <if test="inAll != null or inPer != null or inPat != null"> 
+					and (
+					<trim prefixOverrides="or">
+						<if test="inAll != null"> 
+						or (message_type IN
+								<foreach collection="inAll" index="item" item="item" open="(" separator="," close=")">
+						            #{item}
+						        </foreach>
+						    )
+						</if>
+						<if test="inPer != null"> 
+							or( message_type IN
+									<foreach collection="inPer" index="item" item="item" open="(" separator="," close=")">
+							            #{item}
+							        </foreach>
+							   and
+							   	belong_uid = #{belongUid}
+							   )
+						</if>
+						<if test="inPat != null"> 
+							or( message_type IN
+									<foreach collection="inPat" index="item" item="item" open="(" separator="," close=")">
+							            #{item}
+							        </foreach>
+							   and
+							   	belong_department_id = #{belongDepartmentId}
+							   )
+						</if>
+					</trim>
+					)
+				</if>
+				<if test="userId != null"> 
+						AND (n.dUserId IS NULL OR n.dUserId!= #{userId})
+			   </if>		
+			   <if test="userId != null"> 
+						AND (n.aUserId IS NULL OR n.aUserId= #{userId})
+			   </if>			
+				</trim>
+		</where>
+		<if test="sorting != null"> ORDER BY ${sorting}</if>
+		<if test="sorting == null"> ORDER BY id desc </if>
+		<if test="offset != null and limit != null">
+			LIMIT #{offset}, #{limit}
+		</if>
+	</select> -->
+	<select id="selectListMessage" resultMap="BaseResultMap" parameterType="java.util.Map">
+			 SELECT   b.* ,	
+				CASE WHEN  asg.is_read IS NULL THEN 0 ELSE asg. is_read END is_read
+				FROM(SELECT * FROM (SELECT
+				        s.*,
+					d.user_id d_user_id,
+					CASE WHEN  d.is_delete IS NULL THEN 0 ELSE d.is_delete END is_delete
+				FROM t_operation_message s  
+				LEFT JOIN ( SELECT message_id, is_delete, user_id FROM app_delete  WHERE user_id = #{userId} ) d ON s.id=d.message_id  
+				<where>
+				<trim prefixOverrides="and|or">
+					<if test="messageTypes != null"> 
+						AND n.`message_type` IN
+								<foreach collection="messageTypes" index="item" item="item" open="(" separator="," close=")">
+						            #{item}
+						        </foreach>
+				   </if>
+				   <if test="inAll != null or inPer != null or inPat != null"> 
+						and (
+						<trim prefixOverrides="or">
+							<if test="inAll != null"> 
+							or (message_type IN
+									<foreach collection="inAll" index="item" item="item" open="(" separator="," close=")">
+							            #{item}
+							        </foreach>
+							    )
+							</if>
+							<if test="inPer != null"> 
+								or( message_type IN
+										<foreach collection="inPer" index="item" item="item" open="(" separator="," close=")">
+								            #{item}
+								        </foreach>
+								   and
+								   	belong_uid = #{belongUid}
+								   )
+							</if>
+							<if test="inPat != null"> 
+								or( message_type IN
+										<foreach collection="inPat" index="item" item="item" open="(" separator="," close=")">
+								            #{item}
+								        </foreach>
+								   and
+								   	belong_department_id = #{belongDepartmentId}
+								   )
+							</if>
+						</trim>
+						)
+					</if>						
+					</trim>
+				</where>) n
+            WHERE  n.is_delete=0 )b  LEFT  JOIN ( SELECT message_id, is_read, user_id FROM app_sign  WHERE user_id = #{userId} ) asg ON b.id=asg.`message_id`
+		
+		<if test="sorting != null"> ORDER BY ${sorting}</if>
+		<if test="sorting == null"> ORDER BY id desc </if>
+		<if test="offset != null and limit != null">
+			LIMIT #{offset}, #{limit}
+		</if>
+	</select>
 	
 </mapper>

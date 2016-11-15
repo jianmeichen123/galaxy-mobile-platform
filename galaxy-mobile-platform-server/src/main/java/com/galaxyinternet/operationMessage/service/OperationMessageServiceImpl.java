@@ -3,11 +3,16 @@ package com.galaxyinternet.operationMessage.service;
 import static com.galaxyinternet.utils.ValidationUtil.isMoreThan;
 import static com.galaxyinternet.utils.ValidationUtil.isNull;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.galaxyinternet.bo.OperationMessageBo;
 import com.galaxyinternet.dao.operationMessage.OperationMessageDao;
 import com.galaxyinternet.framework.core.dao.BaseDao;
+import com.galaxyinternet.framework.core.model.Page;
 import com.galaxyinternet.framework.core.service.impl.BaseServiceImpl;
 import com.galaxyinternet.model.operationMessage.OperationMessage;
 import com.galaxyinternet.service.OperationMessageService;
@@ -67,6 +72,19 @@ public class OperationMessageServiceImpl extends BaseServiceImpl<OperationMessag
 	@Override
 	public Long selectCount(OperationMessage query) {
 		return operationMessageDao.selectCount(query);
+	}
+
+	//新增的消息列表
+	@Override
+	public Page<OperationMessage> selectListMessage(OperationMessageBo query, Pageable pageable) {
+		
+		return operationMessageDao.selectListMessage(query, pageable);
+	}
+
+	@Override
+	public List<OperationMessage> selectList(OperationMessageBo queryo) {
+		
+		return operationMessageDao.selectList(queryo);
 	}
 
 

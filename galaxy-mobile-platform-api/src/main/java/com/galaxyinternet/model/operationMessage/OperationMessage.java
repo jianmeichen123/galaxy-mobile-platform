@@ -43,6 +43,13 @@ public class OperationMessage extends BaseEntity{
 	private List<String> messageList;
 	
 	
+	
+	//2016/10/17 修改 消息 app端新增已读 未读   逻辑删除和不删除的字段 
+
+	private Integer isDelete;
+	private Integer isRead;
+	private String userId;
+	
 	public String getDepartment() {
 		return department;
 	}
@@ -138,6 +145,28 @@ public class OperationMessage extends BaseEntity{
 	
 
 	
+	
+	
+	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public Integer getIsDelete() {
+		return isDelete;
+	}
+	public void setIsDelete(Integer isDelete) {
+		this.isDelete = isDelete;
+	}
+	public Integer getIsRead() {
+		return isRead;
+	}
+	public void setIsRead(Integer isRead) {
+		this.isRead = isRead;
+	}
+
 	public Serializable getUserData() {
 		return userData;
 	}
