@@ -196,6 +196,7 @@
 <!-- 				<jdbc.username>fxuser</jdbc.username> -->
 <!-- 				<jdbc.password>fxdb_Fp9EPkG2</jdbc.password> -->
 
+
 			    <!-- 仿真数据库  -->
 				<jdbc.url>
 					jdbc:mysql://10.9.11.219:3306/fx_db?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf8
