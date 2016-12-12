@@ -134,7 +134,13 @@
 		select count(id) from t_operation_message
 		<include refid="Base_Where_Clause" />
 	</select>
-	
+	<!-- 通过id查询 -->
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+	    select 
+	    <include refid="Base_Column_List" />
+	    from t_operation_message
+	    where id = #{id,jdbcType=BIGINT}
+  </select>
 	<!-- 根据操作人查询项目id -->
 	<select id="selectProjecIdsByOperatorId" resultType="string" parameterType="java.lang.Long">
 		SELECT
