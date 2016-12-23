@@ -131,4 +131,10 @@
 	<delete id="deleteById" parameterType="UserRole">
 		delete from platform_user_role where id = #{id}
 	</delete>
+	
+	
+		<!-- 查询投资经理的用户Id -->
+	<select id="selectUserIdByRoleId" resultType="java.lang.Long" parameterType="java.lang.Long">
+		select user_id from platform_user_role where role_id = #{roleId}
+	</select>
 </mapper>
