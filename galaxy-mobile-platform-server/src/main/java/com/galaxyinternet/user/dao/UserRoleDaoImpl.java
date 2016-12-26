@@ -43,4 +43,12 @@ public class UserRoleDaoImpl extends BaseDaoImpl<UserRole, Long>
 		return sqlSessionTemplate.selectOne(getSqlName("selectByUserId"),
 				userId);
 	}
+	
+	
+	//2016/12/21
+
+	@Override
+	public List<Long> selectUserIdByRoleId(Long roleId) {
+		return sqlSessionTemplate.selectList(getSqlName("selectUserIdByRoleId"), roleId);
+	}
 }
