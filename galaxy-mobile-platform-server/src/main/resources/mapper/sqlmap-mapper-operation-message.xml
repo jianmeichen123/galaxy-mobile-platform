@@ -134,9 +134,9 @@
 		select count(id) from t_operation_message
 		<include refid="Base_Where_Clause" />
 	</select> -->
-	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+	<!-- <select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
 		SELECT   
-				count(1)
+				count(b.project_id)
 				FROM(SELECT * FROM (SELECT
 				        s.*,
 					d.user_id d_user_id,
@@ -191,7 +191,61 @@
 		<if test="offset != null and limit != null">
 			LIMIT #{offset}, #{limit}
 		</if>
+	</select> -->
+	
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(1) FROM (SELECT
+				        s.*,
+					d.user_id d_user_id,
+					CASE WHEN  d.is_delete IS NULL THEN 0 ELSE d.is_delete END is_delete
+				FROM t_operation_message s  
+				LEFT JOIN ( SELECT message_id, is_delete, user_id FROM app_delete  WHERE user_id = #{userId} ) d ON s.id=d.message_id  
+				<where>
+				<trim prefixOverrides="and|or">
+					<if test="messageTypes != null"> 
+						AND n.`message_type` IN
+								<foreach collection="messageTypes" index="item" item="item" open="(" separator="," close=")">
+						            #{item}
+						        </foreach>
+				   </if>
+				   <if test="inAll != null or inPer != null or inPat != null"> 
+						and (
+						<trim prefixOverrides="or">
+							<if test="inAll != null"> 
+							or (message_type IN
+									<foreach collection="inAll" index="item" item="item" open="(" separator="," close=")">
+							            #{item}
+							        </foreach>
+							    )
+							</if>
+							<if test="inPer != null"> 
+								or( message_type IN
+										<foreach collection="inPer" index="item" item="item" open="(" separator="," close=")">
+								            #{item}
+								        </foreach>
+								   and
+								   	belong_uid = #{belongUid}
+								   )
+							</if>
+							<if test="inPat != null"> 
+								or( message_type IN
+										<foreach collection="inPat" index="item" item="item" open="(" separator="," close=")">
+								            #{item}
+								        </foreach>
+								   and
+								   	belong_department_id = #{belongDepartmentId}
+								   )
+							</if>
+						</trim>
+						)
+					</if>						
+					</trim>
+				</where>) n
+            WHERE  n.is_delete=0 
 	</select>
+	
+	
+	
 	<!-- 通过id查询 -->
 	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
 	    select 
@@ -353,5 +407,60 @@
 			LIMIT #{offset}, #{limit}
 		</if>
 	</select>
+	
+	
+	
+	<!-- <select id="selectTS" resultType="java.lang.Long" parameterType="java.util.Map">
+	 	 SELECT count(id) FROM (SELECT
+				        s.*,
+					d.user_id d_user_id,
+					CASE WHEN  d.is_delete IS NULL THEN 0 ELSE d.is_delete END is_delete
+				FROM t_operation_message s  
+				LEFT JOIN ( SELECT message_id, is_delete, user_id FROM app_delete  WHERE user_id = #{userId} ) d ON s.id=d.message_id  
+				<where>
+				<trim prefixOverrides="and|or">
+					<if test="messageTypes != null"> 
+						AND n.`message_type` IN
+								<foreach collection="messageTypes" index="item" item="item" open="(" separator="," close=")">
+						            #{item}
+						        </foreach>
+				   </if>
+				   <if test="inAll != null or inPer != null or inPat != null"> 
+						and (
+						<trim prefixOverrides="or">
+							<if test="inAll != null"> 
+							or (message_type IN
+									<foreach collection="inAll" index="item" item="item" open="(" separator="," close=")">
+							            #{item}
+							        </foreach>
+							    )
+							</if>
+							<if test="inPer != null"> 
+								or( message_type IN
+										<foreach collection="inPer" index="item" item="item" open="(" separator="," close=")">
+								            #{item}
+								        </foreach>
+								   and
+								   	belong_uid = #{belongUid}
+								   )
+							</if>
+							<if test="inPat != null"> 
+								or( message_type IN
+										<foreach collection="inPat" index="item" item="item" open="(" separator="," close=")">
+								            #{item}
+								        </foreach>
+								   and
+								   	belong_department_id = #{belongDepartmentId}
+								   )
+							</if>
+						</trim>
+						)
+					</if>						
+					</trim>
+				</where>) n
+            WHERE  n.is_delete=0 
+  </select> -->
+	
+	
 	
 </mapper>
