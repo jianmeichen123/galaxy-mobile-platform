@@ -44,8 +44,11 @@ public class User extends BaseUser {
 	
 	//2016/8/23 修改app端获取当前登录人的版本号
 	private String version;
+	//2016/12/21 添加app端的新字段
+	private boolean isCurrentUser;
 	
-	
+	//部门Ids2016/12/21
+	private List<Long> departmentIds;
 	
 	public List<Long> getIds() {
 		return ids;
@@ -241,6 +244,24 @@ public class User extends BaseUser {
 	public void setVersion(String version) {
 		this.version = version;
 	}
+
+	public boolean isCurrentUser() {
+		return isCurrentUser;
+	}
+
+	public void setCurrentUser(boolean isCurrentUser) {
+		this.isCurrentUser = isCurrentUser;
+	}
+
+	public List<Long> getDepartmentIds() {
+		return departmentIds;
+	}
+
+	public void setDepartmentIds(List<Long> departmentIds) {
+		this.departmentIds = departmentIds;
+	}
+	
+	
 	
 	
 }
