@@ -219,4 +219,10 @@ public class DictServiceImpl extends BaseServiceImpl<Dict>implements DictService
 		}
 	}
 
+	@Override
+	public Dict selecthyName(Dict dict) {
+		// TODO Auto-generated method stub
+		return dictDao.selecthyName(dict);
+	}
+
 }

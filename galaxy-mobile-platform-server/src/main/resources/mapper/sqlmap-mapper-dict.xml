@@ -217,5 +217,15 @@
 		WHERE
 			is_delete = 0		
    </select>
-   
+   <select id="selecthyName"  resultMap="BaseResultMap" >
+   		SELECT
+			<include refid="Base_Column_List" />
+		FROM 
+			dict
+		WHERE
+			dict_code= #{code}
+		and 
+			parent_code= #{parentCode}
+					
+   </select>
 </mapper>
