@@ -80,6 +80,13 @@ public interface DictService extends BaseService<Dict> {
 	 */
 	int updateByCode(Dict entity);
 	
+	/**
+	 * 
+	 * @param code
+	 * @return
+	 */
+	Dict selecthyName(Dict dict);
+	
 }
 
 
