@@ -106,5 +106,17 @@ public class DictDaoImpl extends BaseDaoImpl<Dict, Long> implements DictDao {
 			throw new DaoException(String.format("查询同一parentCode下value最大值：%s", getSqlName("selectMaxValueByParentCode")),e);
 		}
 	}
+	
+	@Override
+	public Dict selecthyName(Dict dict) {
+		Assert.notNull(dict);
+		try {
+			return sqlSessionTemplate.selectOne(getSqlName("selecthyName"), dict);
+		} catch (Exception e) {
+			throw new DaoException(
+					String.format("查询同一parent与传入参数数据相同（in） 语句：%s", getSqlName("selectCountByParentIdAndNameOrValue")),
+					e);
+		}
+	}
 
 }
