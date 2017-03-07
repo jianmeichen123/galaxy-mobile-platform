@@ -35,4 +35,6 @@ public interface DictDao extends BaseDao<Dict, Long>{
 	int insertInBatch(BatchDictInsetParam batchDictInsetParam);
 
 	Integer selectMaxValueByParentCode(String parentCode);
+	
+	Dict selecthyName(Dict dict);
 }
