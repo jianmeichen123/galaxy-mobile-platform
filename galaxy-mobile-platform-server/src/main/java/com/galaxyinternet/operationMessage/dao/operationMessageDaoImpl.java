@@ -33,8 +33,8 @@ public class operationMessageDaoImpl extends BaseDaoImpl<OperationMessage, Long>
 	@Override
 	public Page<OperationMessage> selectListMessage(OperationMessageBo query, Pageable pageable) {
 		try {
-			//List<OperationMessage> contentList = sqlSessionTemplate.selectList(getSqlName("selectListMessage"),
-			List<OperationMessage> contentList = sqlSessionTemplate.selectList(getSqlName("selectTg"),
+			List<OperationMessage> contentList = sqlSessionTemplate.selectList(getSqlName("selectListMessage"),
+			//List<OperationMessage> contentList = sqlSessionTemplate.selectList(getSqlName("selectTg"),
 					getParams(query, pageable));
 			return new  Page<OperationMessage>(contentList, pageable, this.selectCount(query));
 		} catch (Exception e) {
