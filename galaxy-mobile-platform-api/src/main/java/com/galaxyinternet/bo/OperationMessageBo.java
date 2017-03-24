@@ -18,7 +18,12 @@ public class OperationMessageBo extends OperationMessage  implements Pagable{
 	private List<String> inPer;
 	private List<String> inPat;
 	
+	//2017/3/7 修改 为了上线 消息
+	private String updateTtime;
 
+	//2017/3/9 修改 为了 实现 提升查询速度
+	private List<String> idsss;
+	
 	
 	public List<String> getMessageTypes()
 	{
@@ -155,5 +160,23 @@ public class OperationMessageBo extends OperationMessage  implements Pagable{
 		this.inPat = inPat;
 	}
 
+	public String getUpdateTtime() {
+		return updateTtime;
+	}
+
+	public void setUpdateTtime(String updateTtime) {
+		this.updateTtime = updateTtime;
+	}
+
+	public List<String> getIdsss() {
+		return idsss;
+	}
+
+	public void setIdsss(List<String> idsss) {
+		this.idsss = idsss;
+	}
+
+
+	
 	
 }
