@@ -33,14 +33,14 @@ public class operationMessageDaoImpl extends BaseDaoImpl<OperationMessage, Long>
 	@Override
 	public Page<OperationMessage> selectListMessage(OperationMessageBo query, Pageable pageable) {
 		try {
-			long begin = System.currentTimeMillis();
-			List<OperationMessage> contentList = sqlSessionTemplate.selectList(getSqlName("selectListMessage"),
+		
+			List<OperationMessage> contentList = sqlSessionTemplate.selectList(getSqlName("select"),
 			//List<OperationMessage> contentList = sqlSessionTemplate.selectList(getSqlName("selectTg"),
 					getParams(query, pageable));
 			//System.out.println("tdjamtam__1__" + (System.currentTimeMillis()-begin));
 			return new  Page<OperationMessage>(contentList, pageable, this.selectCount(query));
 		} catch (Exception e) {
-			throw new DaoException(String.format("根据分页对象查询列表出错！语句:%s", getSqlName("selectListMessage")), e);
+			throw new DaoException(String.format("根据分页对象查询列表出错！语句:%s", getSqlName("select")), e);
 		}
 	}
 	@Override

@@ -42,7 +42,7 @@ public class OperationMessage extends BaseEntity{
 	private Serializable userData;
 	private List<String> messageList;
 	
-	
+	private byte singleMark;
 	
 	//2016/10/17 修改 消息 app端新增已读 未读   逻辑删除和不删除的字段 
 
@@ -184,5 +184,11 @@ public class OperationMessage extends BaseEntity{
 		return "OperationMessage [department=" + department + ", role=" + role + ", type=" + type + ", projectName="
 				+ projectName + ", operator=" + operator + ", content=" + content + ", module=" + module
 				+ ", projectId=" + projectId + ", operatorId=" + operatorId + "]";
+	}
+	public byte getSingleMark() {
+		return singleMark;
+	}
+	public void setSingleMark(byte singleMark) {
+		this.singleMark = singleMark;
 	}
 }
