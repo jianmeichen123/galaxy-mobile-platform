@@ -130,10 +130,10 @@
 	
 	
 		<!-- 查询总数 -->
-<!-- 	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
 		select count(id) from t_operation_message
 		<include refid="Base_Where_Clause" />
-	</select> -->
+	</select>
 	<!-- <select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
 		SELECT   
 				count(b.project_id)
@@ -193,7 +193,7 @@
 		</if>
 	</select> -->
 	
-	<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+	<!-- <select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
 		select count(1) FROM (SELECT
 				        s.*,
 					d.user_id d_user_id,
@@ -242,7 +242,7 @@
 					</trim>
 				</where>) n
             WHERE  n.is_delete=0 
-	</select>
+	</select> -->
 	
 	
 	
