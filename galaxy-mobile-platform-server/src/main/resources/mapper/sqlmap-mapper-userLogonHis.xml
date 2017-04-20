@@ -10,7 +10,9 @@
 			   init_logon_time as initLogonTime ,
 			   last_logon_time  as  lastLogonTime ,
 			   logon_times   as logonTimes,
-			   app_version as appVersion
+			   app_version as appVersion,
+			   android_version as androidVersion,
+			   android_client as androidClient
     </sql>
     
     <sql id="Base_Where_Condition">
@@ -25,6 +27,8 @@
 				          <if test="lastLogonTime !=null">  and  last_logon_time = #{lastLogonTime , jdbcType=DATETIME }</if>
 				          <if test="logonTimes !=null">  and  logon_times = #{logonTimes , jdbcType=SMALLINT }</if>
 				          <if test="appVersion !=null">  and  app_version = #{appVersion , jdbcType=VARCHAR }</if>
+				          <if test="androidVersion !=null">  and  android_version = #{androidVersion , jdbcType=VARCHAR }</if>
+				          <if test="androidClient !=null">  and  android_client = #{androidClient , jdbcType=VARCHAR }</if>
 					</trim>
 		</where>
    </sql>
@@ -60,7 +64,9 @@
 			   init_logon_time ,
 			   last_logon_time ,
 			   logon_times ,
-			   app_version
+			   app_version ,
+			   android_version ,
+			   android_client
 			) 
 		VALUES
 			  (
@@ -72,7 +78,9 @@
 			   #{initLogonTime} ,
 			   #{lastLogonTime} ,
 			   #{logonTimes} ,
-			   #{appVersion}
+			   #{appVersion} ,
+			   #{androidVersion} ,
+			   #{androidClient}
 			  )
 	    ]]>
     </insert>
