@@ -64,14 +64,26 @@ public class User extends BaseUser {
 	private List<Long> ids;
 	private String nameMbLike;
 	
+	//2017/4/6 修改 添加设备区分开 
 	
-	
+	private String aclient;         //客户端名称
 	/*
 	 * private String salt; private String originSalt;
 	 */
+	private String androidVersion;   //获取Android版本号（系统版本号）
+	
+	private String androidClient;    //登录设备（手机设备） 
 
 	public String getBirthStr() {
 		return birthStr;
+	}
+
+	public String getAclient() {
+		return aclient;
+	}
+
+	public void setAclient(String aclient) {
+		this.aclient = aclient;
 	}
 
 	public void setBirthStr(String birthStr) {
@@ -259,6 +271,22 @@ public class User extends BaseUser {
 
 	public void setDepartmentIds(List<Long> departmentIds) {
 		this.departmentIds = departmentIds;
+	}
+
+	public String getAndroidVersion() {
+		return androidVersion;
+	}
+
+	public void setAndroidVersion(String androidVersion) {
+		this.androidVersion = androidVersion;
+	}
+
+	public String getAndroidClient() {
+		return androidClient;
+	}
+
+	public void setAndroidClient(String androidClient) {
+		this.androidClient = androidClient;
 	}
 	
 	

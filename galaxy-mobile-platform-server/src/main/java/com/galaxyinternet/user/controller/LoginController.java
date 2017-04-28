@@ -70,9 +70,12 @@ public class LoginController extends BaseControllerImpl<User, UserBo> {
 		ResponseData<User> responsebody = new ResponseData<User>();
 		String email = user.getEmail();
 		String password = user.getPassword();
-
-		
-		
+		//客户端名称
+		String aclient = user.getAclient();
+		//获取Android版本号（系统版本号）
+		String androidVersion = user.getAndroidVersion();
+		//登录设备（手机设备）
+		String androidClient = user.getAndroidClient();
 		if (StringUtils.isBlank(email) || StringUtils.isBlank(password)) {
 			responsebody.setResult(new Result(Status.ERROR, Constants.IS_UP_EMPTY, "用户名或密码不能为空！"));
 			return responsebody;
@@ -106,9 +109,9 @@ public class LoginController extends BaseControllerImpl<User, UserBo> {
 			responsebody.setEntity(user);
 			responsebody.setResult(new Result(Status.OK, Constants.OPTION_SUCCESS, "登录成功！"));
 			try{
-				UserLogonHisBO logonBo = new UserLogonHisBO();
+				/*UserLogonHisBO logonBo = new UserLogonHisBO();
 				logonBo.setUserId(user.getId());
-				logonBo.setLoginDate(new Date());
+				logonBo.setLoginDate(new Date());*/
 				/*UserLogonHis userLogon = userLogonHisService.queryUserLogon(logonBo);*/
 /*				if(userLogon==null){
 					UserLogonHis userLogonHis = new UserLogonHis();				
@@ -132,8 +135,18 @@ public class LoginController extends BaseControllerImpl<User, UserBo> {
 					userLogonHis.setLogonTimes(userLogon.getLogonTimes()+1);					
 					userLogonHisService.updateUserLogon(userLogonHis);
 				}*/
-				UserLogonHis userLogonHis = new UserLogonHis();				
-				userLogonHis.setAccessClient(Terminal.IOS.getTerminalName());
+				UserLogonHis userLogonHis = new UserLogonHis();	
+				if(aclient !=null ){
+					userLogonHis.setAccessClient(aclient);
+				}else{
+					userLogonHis.setAccessClient(Terminal.IOS.getTerminalName());
+				}
+				if(androidVersion!=null){
+					userLogonHis.setAndroidVersion(androidVersion);
+				}
+				if(androidClient!=null){
+					userLogonHis.setAndroidClient(androidClient);					
+				}
 				userLogonHis.setLoginDate(new Date());
 				//增加版本号 2016/8/23 
 				if(user.getVersion()!=null){
