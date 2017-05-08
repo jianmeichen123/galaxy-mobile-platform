@@ -36,7 +36,10 @@ public class UserLogonHis extends PagableEntity {
 	//获取用户的登录总数
 	private Long strCount;
 	
-
+	//2017/4/6 修改 
+	private String androidVersion;    //Android版本号（系统版本号）
+	
+	private String androidClient;     //登录设备（手机设备）
 	
 	public Timestamp getLastLogonTime() {
 		return lastLogonTime;
@@ -99,8 +102,20 @@ public class UserLogonHis extends PagableEntity {
 	public void setAppVersion(String appVersion) {
 		this.appVersion = appVersion;
 	}
+	public String getAndroidVersion() {
+		return androidVersion;
+	}
+	public void setAndroidVersion(String androidVersion) {
+		this.androidVersion = androidVersion;
+	}
+	public String getAndroidClient() {
+		return androidClient;
+	}
+	public void setAndroidClient(String androidClient) {
+		this.androidClient = androidClient;
+	}
 
-
+	
 
 	
 	
