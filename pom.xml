@@ -13,6 +13,7 @@
     <eclipse.useProjectReferences>false</eclipse.useProjectReferences>
   </properties>
 
+
   <modules>
   	<module>galaxy-mobile-platform-api</module>
   	<module>galaxy-mobile-platform-server</module>
